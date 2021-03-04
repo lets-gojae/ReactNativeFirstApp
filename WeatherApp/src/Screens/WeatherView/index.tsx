@@ -4,16 +4,48 @@ import Geolocation from 'react-native-geolocation-service';
 
 import Styled from 'styled-components/native';
 
+const Container = Styled.SafeAreaView`
+  flex: 1;
+  background-color: #EEE;
+`;
+
+const WeatherContainer = Styled(FlatList)``;
+
+const LoadingView = Styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+`;
+const Loading = Styled.ActivityIndicator`
+    margin-bottom: 16px;
+`;
+const LoadingLabel = Styled.Text`
+  font-size: 16px;
+`;
+
+const WeatherItemContainer = Styled.View`
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+const Weather = Styled.Text`
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: bold;
+`;
+const Temperature = Styled.Text`
+  font-size: 16px;
+`;
+
 interface Props {}
+
+const API_KEY = '73bd07d674cc4569f650bad6f22dc79d';
 
 interface IWeather {
   temperature?: number;
   weather?: string;
   isLoading: boolean;
 }
-
-const API_KEY = 'de4a5508f3ddda1ce1451e53c8af9436';
-
 const WeatherView = ({}: Props) => {
   const [weatherInfo, setWeatherInfo] = useState<IWeather>({
     temperature: undefined,
@@ -43,7 +75,7 @@ const WeatherView = ({}: Props) => {
             setWeatherInfo({
               isLoading: true,
             });
-            showError('날씨 정보를 가져오는데 실패했습니다.');
+            showError('날씨 정보를 가져오는데 실패하였습니다.');
           });
       },
       (error) => {
@@ -89,7 +121,7 @@ const WeatherView = ({}: Props) => {
         renderItem={({item, index}) => (
           <WeatherItemContainer>
             <Weather>{(item as IWeather).weather}</Weather>
-            <Temperature>({(item as IWeather).temperature}C)</Temperature>
+            <Temperature>({(item as IWeather).temperature}°C)</Temperature>
           </WeatherItemContainer>
         )}
         contentContainerStyle={{flex: 1}}
@@ -99,40 +131,3 @@ const WeatherView = ({}: Props) => {
 };
 
 export default WeatherView;
-
-const Container = Styled.SafeAreaView`
-  flex: 1;
-  background-color: #EEE;
-`;
-
-const WeatherContainer = Styled(FlatList)``;
-
-const LoadingView = Styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Loading = Styled.ActivityIndicator`
-  margin-bottom: 16px;
-`;
-
-const LoadingLabel = Styled.Text`
-  font-size: 16px;
-`;
-
-const WeatherItemContainer = Styled.View`
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Weather = Styled.Text`
-  margin-bottom: 16px;
-  font-size: 24px;
-  font-weigth: bold;
-`;
-
-const Temperature = Styled.Text`
-  font-size: 16px;
-`;
