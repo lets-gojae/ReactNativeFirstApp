@@ -6,11 +6,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 
 import {UserContext} from '~/Context/User';
 
-import Input from '~/Compoenents/Input';
-import Button from '~/Components/Button';
-import {UserContext} from '~/Context/User';
-
-import Input from '~/Compoenents/Input';
+import Input from '~/Components/Input';
 import Button from '~/Components/Button';
 
 type NavigationProp = StackNavigationProp<LoginNaviParamList, 'Login'>;
@@ -19,7 +15,7 @@ interface Props {
   navigation: NavigationProp;
 }
 
-const Login = () => {
+const Login = ({navigation}: Props) => {
   const {login} = useContext<IUserContext>(UserContext);
 
   useEffect(() => {
@@ -29,7 +25,7 @@ const Login = () => {
   return (
     <Container>
       <FormContainer>
-        <Input styled={{marginBottom: 16}} placeholder="이메일" />
+        <Input style={{marginBottom: 16}} placeholder="이메일" />
         <Input
           style={{marginBottom: 16}}
           placeholder="비밀번호"
