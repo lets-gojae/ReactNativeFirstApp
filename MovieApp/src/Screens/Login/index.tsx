@@ -59,7 +59,7 @@ const Container = Styled.SafeAreaView`
 `;
 
 const FormContainer = Styled.View`
-  width: 100;
+  width: 100%;
   padding: 40px;
 `;
 
