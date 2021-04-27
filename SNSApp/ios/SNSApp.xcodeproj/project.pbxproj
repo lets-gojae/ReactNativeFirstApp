@@ -13,6 +13,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		4C915E6A7B751CCF5763F4FD /* libPods-SNSApp-SNSAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE6C9C2041714E770A6CE76 /* libPods-SNSApp-SNSAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		F4C59A2E263803B600501293 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4C59A2D263803B600501293 /* SplashScreen.storyboard */; };
 		F91002D0D9B9F23A7CBA048E /* libPods-SNSApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1440653D3F420106FF1CF46 /* libPods-SNSApp.a */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		BE8AFDB53C993B3018C7126E /* Pods-SNSApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNSApp.debug.xcconfig"; path = "Target Support Files/Pods-SNSApp/Pods-SNSApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CD9B2E966E32977E905226AD /* Pods-SNSApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNSApp.release.xcconfig"; path = "Target Support Files/Pods-SNSApp/Pods-SNSApp.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F4C59A2D263803B600501293 /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				F4C59A2D263803B600501293 /* SplashScreen.storyboard */,
 				13B07FAE1A68108700A75B9A /* SNSApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* SNSAppTests */,
@@ -145,7 +148,6 @@
 				8CF18C5CE8C715C2C14639AF /* Pods-SNSApp-SNSAppTests.debug.xcconfig */,
 				9D48CDE9521902F3F4C326E8 /* Pods-SNSApp-SNSAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -244,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				F4C59A2E263803B600501293 /* SplashScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
