@@ -188,6 +188,7 @@ const MainNavigator = () => {
 
 export default () => {
   const {isLoading, userInfo} = useContext<IUserContext>(UserContext);
+  
   if (isLoading === false) {
     return <Loading />;
   }
