@@ -1,5 +1,4 @@
 import React from 'react';
-import Styled from 'styled-components/native';
 import {
   FlatList,
   Image,
@@ -7,6 +6,13 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from 'react-native';
+
+import Styled from 'styled-components/native';
+
+const ImageContainer = Styled.TouchableHighlight`
+  background: #FEFFFF;
+  padding: 1px;
+`;
 
 interface Props {
   id?: number;
@@ -69,8 +75,3 @@ const ImageFeedList = ({
 };
 
 export default ImageFeedList;
-
-const ImageContainer = Styled.TouchableHighlight`
-  background: #FEFFFF;
-  padding: 1px;
-`;

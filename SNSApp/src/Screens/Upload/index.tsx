@@ -16,7 +16,7 @@ const Upload = () => {
       feedList={feedList}
       loading={loading}
       onRefresh={() => {
-        setLoading(false);
+        setLoading(true);
         setTimeout(() => {
           setFeedList(getMyFeed(24));
           setLoading(false);

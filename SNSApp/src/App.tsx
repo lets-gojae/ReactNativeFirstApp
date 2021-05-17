@@ -17,5 +17,4 @@ const App = ({}: Props) => {
     </RandomUserDataProvider>
   );
 };
-
 export default App;

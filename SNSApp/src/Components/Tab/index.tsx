@@ -1,6 +1,23 @@
 import React from 'react';
-import Styled from 'styled-components/native';
 import {ImageSourcePropType} from 'react-native';
+import Styled from 'styled-components/native';
+
+const Container = Styled.TouchableOpacity`
+  flex: 1;
+  border-bottom-width: 1px;
+  border-color: #929292;
+  padding-bottom: 8px;
+  align-items: center;
+  justify-content: center;
+`;
+const Label = Styled.Text`
+  font-size: 16px;
+  color: #929292;
+  text-align: center;
+`;
+const TabImage = Styled.Image`
+  margin-top: 8px;
+`;
 
 interface Props {
   selected: boolean;
@@ -21,22 +38,3 @@ const Tab = ({selected, label, imageSource, onPress}: Props) => {
 };
 
 export default Tab;
-
-const Container = Styled.TouchableOpacity`
-  flex: 1;
-  border-bottom-width: 1px;
-  border-color: #929292;
-  padding-bottom: 8px;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Label = Styled.Text`
-  font-size: 16px;
-  color: #929292;
-  text-align: center;
-`;
-
-const TabImage = Styled.Image`
-  margin-top: 8px;
-`;

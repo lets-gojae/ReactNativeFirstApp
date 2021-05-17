@@ -20,9 +20,11 @@ const UserContextProvider = ({children}: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const login = (email: string, password: string): void => {
+    // Use Eamil and Passowrd for login API
+    // Get token and UserInfo via Login API
     AsyncStorage.setItem('token', 'save your token').then(() => {
       setUserInfo({
-        name: 'dev_yakuza',
+        name: 'dev-yakuza',
         email: 'dev.yakuza@gamil.com',
       });
       setIsLoading(true);
@@ -57,10 +59,15 @@ const UserContextProvider = ({children}: Props) => {
 
   return (
     <UserContext.Provider
-      value={{isLoading, userInfo, login, getUserInfo, logout}}>
+      value={{
+        isLoading,
+        userInfo,
+        login,
+        getUserInfo,
+        logout,
+      }}>
       {children}
     </UserContext.Provider>
   );
 };
-
 export {UserContextProvider, UserContext};

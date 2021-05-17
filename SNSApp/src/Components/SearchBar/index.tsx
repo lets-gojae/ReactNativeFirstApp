@@ -1,23 +1,20 @@
 import React from 'react';
+import {ActivityIndicator} from 'react-native';
 import Styled from 'styled-components/native';
 
-import IconButton from '~/Components/IconButton';
-import Input from '~/Components/Input';
+const Container = Styled.View`
+  flex: 1;
+  background-color: #FEFFFF;
+  align-items: center;
+  justify-content: center;
+`;
 
-const SearchBar = () => {
+const Loading = () => {
   return (
     <Container>
-      <Input style={{flex: 1, marginLeft: 8, heigth: 32}} placeholder="검색" />
-      <IconButton iconName="camera" />
+      <ActivityIndicator color="#D3D3D3" size="large" />
     </Container>
   );
 };
 
-export default SearchBar;
-
-const Container = Styled.SafeAreaView`
-  flex:1;
-  flex-direction: row;
-  align-items: center;
-  background-color: #FEFFFF;
-`;
+export default Loading;

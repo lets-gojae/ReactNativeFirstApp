@@ -12,6 +12,16 @@ import {RandomUserDataContext} from '~/Context/RandomUserData';
 import Tab from '~/Components/Tab';
 import NotificationList from './NotificationList';
 
+const ProfileTabContainer = Styled.SafeAreaView`
+  flex-direction: row;
+  background-color: #FEFFFF;
+`;
+
+const TabContainer = Styled.View`
+  width: 100%;
+  height: ${Dimensions.get('window').height}px;
+`;
+
 interface Props {}
 
 const Notification = ({}: Props) => {
@@ -20,13 +30,13 @@ const Notification = ({}: Props) => {
   const [myNotifications, setMyNotifications] = useState<Array<IFeed>>([]);
   const [tabIndex, setTabIndex] = useState<number>(1);
   const width = Dimensions.get('window').width;
-  const tabs = ['팔로일', '내 소식'];
+  const tabs = ['팔로잉', '내 소식'];
   const refScrollView = createRef<ScrollView>();
 
   useEffect(() => {
     setFollowingList(getMyFeed(24));
     setMyNotifications(getMyFeed(24));
-  });
+  }, []);
 
   return (
     <TabContainer>
@@ -79,13 +89,3 @@ const Notification = ({}: Props) => {
 };
 
 export default Notification;
-
-const ProfileTabContainer = Styled.SafeAreaView`
-  flex-direction: row;
-  background-color:#FEFFFF;
-`;
-
-const TabContainer = Styled.View`
-  width: 100%;
-  height: ${Dimensions.get('window').height}px;
-`;

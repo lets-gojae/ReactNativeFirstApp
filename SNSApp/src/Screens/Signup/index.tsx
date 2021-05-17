@@ -1,10 +1,45 @@
 import React, {useState} from 'react';
-import Styled from 'styled-components/native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import Styled from 'styled-components/native';
 
 import Input from '~/Components/Input';
 import Button from '~/Components/Button';
 import Tab from '~/Components/Tab';
+
+const Container = Styled.SafeAreaView`
+  flex: 1;
+  background-color: #FEFFFF;
+`;
+
+const FormContainer = Styled.View`
+  flex: 1;
+  width: 100%;
+  align-items: center;
+  padding: 32px;
+`;
+const Description = Styled.Text`
+  text-align: center;
+  font-size: 12px;
+  color: #929292;
+  margin: 0px 8px;
+`;
+const TabContainer = Styled.View`
+  flex-direction: row;
+  margin-bottom: 16px;
+`;
+const Footer = Styled.View`
+  width: 100%;
+  border-top-width: 1px;
+  border-color: #D3D3D3;
+  padding: 8px;
+`;
+const FooterDescription = Styled.Text`
+  color: #929292;
+  text-align: center;
+`;
+const GoBack = Styled.Text`
+  color: #3796EF;
+`;
 
 type NavigationProp = StackNavigationProp<LoginNaviParamList, 'Signup'>;
 interface Props {
@@ -51,43 +86,3 @@ const Signup = ({navigation}: Props) => {
 };
 
 export default Signup;
-
-const Container = Styled.SafeAreaView`
-  flex: 1;
-  background-color: #FEFFFF;
-`;
-
-const FormContainer = Styled.View`
-  flex: 1;
-  width: 100%;
-  align-items: center;
-  padding: 32px;
-`;
-
-const Description = Styled.Text`
-  text-align: center;
-  font-size: 12px;
-  color: #929292;
-  margin: 0px 8px;
-`;
-
-const TabContainer = Styled.View`
-  flex-direction: row;
-  margin-bottom: 16px;
-`;
-
-const Footer = Styled.View`
-  width: 100%;
-  border-top-width: 1px;
-  border-color: #D3D3D3;
-  padding: 8px;
-`;
-
-const FooterDescription = Styled.Text`
-  color: #929292;
-  text-align: center;
-`;
-
-const GoBack = Styled.Text`
-  color: #3796EF;
-`;

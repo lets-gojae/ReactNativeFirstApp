@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import Styled from 'styled-components/native';
-
 import {
   Dimensions,
   ScrollView,
@@ -9,11 +7,44 @@ import {
   Image,
 } from 'react-native';
 
+import Styled from 'styled-components/native';
+
 import IconButton from '~/Components/IconButton';
+
+const Container = Styled.View``;
+
+const ImageContainer = Styled.View`
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-color: #D3D3D3;
+  width: ${Dimensions.get('window').width}px;
+  height: 400px;
+`;
+
+const FeedImageIndicatorContainer = Styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+const FeedImageIndicator = Styled.View`
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  margin: 2px;
+`;
+
+const FeedMenuContainer = Styled.View`
+  flex-direction: row;
+`;
+const MenuContainer = Styled.View`
+  flex: 1;
+  flex-direction: row;
+`;
 
 interface Props {
   id: number;
-  images: Array<string>;
+  images: Array<String>;
 }
 
 const FeedBody = ({id, images}: Props) => {
@@ -72,36 +103,3 @@ const FeedBody = ({id, images}: Props) => {
 };
 
 export default FeedBody;
-
-const Container = Styled.View``;
-
-const ImageContainer = Styled.View`
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  border-color: #D3D3D3;
-  width: ${Dimensions.get('window').width}px;
-  height: 400px;
-`;
-
-const FeedImageIndicatorContainer = Styled.View`
-  flex: 1;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;
-
-const FeedImageIndicator = Styled.View`
-  width: 8px;
-  height: 8px;
-  border-radius: 8px;
-  margin: 2px;
-`;
-
-const FeedMenuContainer = Styled.View`
-  flex-direction: row;
-`;
-
-const MenuContainer = Styled.View`
-  flex: 1;
-  flex-direction: row;
-`;

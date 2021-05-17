@@ -26,13 +26,13 @@ const RandomUserDataProvider = ({cache, children}: Props) => {
 
   const getCacheData = async (key: string) => {
     const cacheData = await AsyncStorage.getItem(key);
-    if (cache == false || cacheData === null) {
+    if (cache === false || cacheData === null) {
       return undefined;
     }
 
     const cacheList = JSON.parse(cacheData);
 
-    if (cacheList.lenth !== 25) {
+    if (cacheList.length !== 25) {
       return undefined;
     }
 
@@ -63,7 +63,7 @@ const RandomUserDataProvider = ({cache, children}: Props) => {
   };
 
   const setDescriptions = async () => {
-    const cachedData = await getCacheData('DescriptionsList');
+    const cachedData = await getCacheData('DescriptionList');
     console.log(cachedData);
     if (cachedData) {
       setDescriptionList(cachedData);

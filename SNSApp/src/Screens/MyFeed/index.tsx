@@ -1,8 +1,12 @@
 import React, {useContext, useState, useEffect} from 'react';
-import Styled from 'styled-components/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {FlatList} from 'react-native';
+import Styled from 'styled-components/native';
 import SplashScreen from 'react-native-splash-screen';
+
+const HeaderRightContainer = Styled.View`
+  flex-direction: row;
+`;
 
 import {RandomUserDataContext} from '~/Context/RandomUserData';
 import IconButton from '~/Components/IconButton';
@@ -74,7 +78,3 @@ const MyFeed = ({navigation}: Props) => {
 };
 
 export default MyFeed;
-
-const HeaderRightContainer = Styled.View`
-  flex-direction: row;
-`;

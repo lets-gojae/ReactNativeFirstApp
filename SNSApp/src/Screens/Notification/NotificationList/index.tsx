@@ -3,6 +3,23 @@ import {FlatList} from 'react-native';
 
 import Styled from 'styled-components/native';
 
+const NotificationContainer = Styled.View`
+  flex-direction: row;
+  padding: 8px 16px;
+  align-items: center;
+`;
+const ProfileImage = Styled.Image`
+  border-radius: 40px;
+`;
+const LabelName = Styled.Text`
+  font-weight: bold;
+`;
+const Message = Styled.Text`
+  flex: 1;
+  padding:0 16px;
+`;
+const PostImage = Styled.Image``;
+
 interface Props {
   id: number;
   width: number;
@@ -41,24 +58,3 @@ const NotificationList = ({id, width, data, onEndReached}: Props) => {
 };
 
 export default NotificationList;
-
-const NotificationContainer = Styled.View`
-  flex-difection: row;
-  padding: 8px 16px;
-  align-items: center;
-`;
-
-const ProfileImage = Styled.Image`
-  border-radius: 40px;
-`;
-
-const LabelName = Styled.Text`
-  font-weight: bold;
-`;
-
-const Message = Styled.Text`
-  flex: 1;
-  padding: 0 16px;
-`;
-
-const PostImage = Styled.Image``;

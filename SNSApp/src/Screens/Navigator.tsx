@@ -53,7 +53,9 @@ const FeedsTab = () => {
       <Stack.Screen
         name="Feeds"
         component={Feeds}
-        options={{header: () => <SearchBar />}}
+        options={{
+          header: () => <SearchBar />,
+        }}
       />
       <Stack.Screen
         name="FeedListOnly"
@@ -86,7 +88,7 @@ const ProfileTab = () => {
       <Stack.Screen
         name="Profile"
         component={Profile}
-        options={{title: 'profile'}}
+        options={{title: 'Profile'}}
       />
     </Stack.Navigator>
   );
@@ -188,7 +190,7 @@ const MainNavigator = () => {
 
 export default () => {
   const {isLoading, userInfo} = useContext<IUserContext>(UserContext);
-  
+
   if (isLoading === false) {
     return <Loading />;
   }

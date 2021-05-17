@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect} from 'react';
 import {FlatList} from 'react-native';
 
 import {RandomUserDataContext} from '~/Context/RandomUserData';
-import Feed from '~/Conponents/Feed';
+import Feed from '~/Components/Feed';
 
 const FeedListOnly = () => {
   const {getMyFeed} = useContext(RandomUserDataContext);

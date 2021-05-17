@@ -3,10 +3,56 @@ import Styled from 'styled-components/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import SplashScreen from 'react-native-splash-screen';
 
-import {UserContext} from '~/context/User';
+import {UserContext} from '~/Context/User';
 
 import Input from '~/Components/Input';
 import Button from '~/Components/Button';
+
+const Container = Styled.SafeAreaView`
+  flex: 1;
+  background-color: #FEFFFF;
+`;
+const FormContainer = Styled.View`
+  flex: 1;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+`;
+
+const Logo = Styled.Text`
+  color: #292929;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+`;
+
+const PasswordReset = Styled.Text`
+  width: 100%;
+  color: #3796EF;
+  text-align: right;
+  margin-bottom: 24px;
+`;
+
+const SignupText = Styled.Text`
+  color: #929292;
+  text-align: center;
+`;
+const SignupLink = Styled.Text`
+  color: #3796EF;
+`;
+
+const Footer = Styled.View`
+  width: 100%;
+  border-top-width: 1px;
+  border-color: #D3D3D3;
+  padding: 8px;
+`;
+const Copyright = Styled.Text`
+  color: #929292;
+  text-align: center;
+`;
 
 type NavigationProp = StackNavigationProp<LoginNaviParamList, 'Login'>;
 interface Props {
@@ -41,7 +87,7 @@ const Login = ({navigation}: Props) => {
           }}
         />
         <SignupText>
-          계정이 없으신가요?{''}
+          계정이 없으신가요?{' '}
           <SignupLink onPress={() => navigation.navigate('Signup')}>
             가입하기.
           </SignupLink>
@@ -55,55 +101,3 @@ const Login = ({navigation}: Props) => {
 };
 
 export default Login;
-
-const Container = Styled.View`
-  flex: 1;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  padding: 32px;
-`;
-
-const FormContainer = Styled.View`
-  flex: 1;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  padding: 32px;
-`;
-
-const Logo = Styled.Text`
-  color: #292929;
-  font-size: 40px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 40px;
-`;
-
-const PasswordReset = Styled.Text`
-  width: 100%;
-  color: #3796EF;
-  text-align: right;
-  margin-bottom; 24px;
-`;
-
-const SignupText = Styled.Text`
-  color: $929292;
-  text-align: center;
-`;
-
-const SignupLink = Styled.Text`
-  color: #3796EF;
-`;
-
-const Footer = Styled.View`
-  width: 100%;
-  border-top-width: 1px;
-  border-color: #D3D3D3;
-  padding: 8px;
-`;
-
-const Copyright = Styled.Text`
-  color: #929292;
-  text-align: center;
-`;
