@@ -6,7 +6,9 @@ interface IUserInfo {
 interface IUserContext {
   isLoading: boolean;
   userInfo: IUserInfo | undefined;
-  login: (email: string, password: string) => void;
+  appLogin: (email: string, password: string) => void;
+  result: string | undefined;
+  signInWithKakao: () => void;
   // getUserInfo: () => void;
-  // logout: () => void;
+  logout: () => void;
 }
