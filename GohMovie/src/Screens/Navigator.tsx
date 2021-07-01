@@ -55,14 +55,14 @@ const MovieNavigator = () => {
 
 export default () => {
   const {result, userInfo} = useContext<IUserContext>(UserContext);
-  let value = AsyncStorage.getItem('accessToken');
 
   // if (isLoading === false) {
   //   return <Loading />;
   // }
+
   return (
     <NavigationContainer>
-      {userInfo ? <MovieNavigator /> : <LoginNavigator />}
+      {userInfo || result ? <MovieNavigator /> : <LoginNavigator />}
     </NavigationContainer>
   );
 };

@@ -10,5 +10,5 @@ interface IUserContext {
   result: string | undefined;
   signInWithKakao: () => void;
   // getUserInfo: () => void;
-  logout: () => void;
+  signOut: () => void;
 }
