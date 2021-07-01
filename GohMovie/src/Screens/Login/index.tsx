@@ -1,13 +1,13 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import Styled from 'styled-components/native';
 import {Linking} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import {StackNavigationProp} from '@react-navigation/stack';
-
 import {UserContext} from '~/Context/User';
 
 import Input from '~/Components/Input';
 import Button from '~/Components/Button';
+import KakaoBtn from '~/Components/KakaoBtn';
 
 type NavigationProp = StackNavigationProp<LoginNaviParamList, 'Login'>;
 
@@ -16,7 +16,8 @@ interface Props {
 }
 
 const Login = ({navigation}: Props) => {
-  const {login} = useContext<IUserContext>(UserContext);
+  const {appLogin, signInWithKakao, result} =
+    useContext<IUserContext>(UserContext);
 
   useEffect(() => {
     SplashScreen.hide();
@@ -32,11 +33,16 @@ const Login = ({navigation}: Props) => {
           secureTextEntry={true}
         />
         <Button
-          style={{marginBottom: 24}}
+          style={{marginBottom: 16}}
           label="로그인"
           onPress={() => {
-            login('dev.yakuza@gmail.com', 'password');
+            appLogin('dev.yakuza@gmail.com', 'password');
           }}
+        />
+        <KakaoBtn
+          style={{marginBottom: 24}}
+          label="Login with Kakao"
+          onPress={() => signInWithKakao()}
         />
         <PasswordReset
           onPress={() => {
@@ -69,3 +75,5 @@ const PasswordReset = Styled.Text`
   color: #FFFFFF;
   text-align: center;
 `;
+
+// const Kakaobtn = Styled.Image ``

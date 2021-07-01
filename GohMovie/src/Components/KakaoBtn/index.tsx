@@ -7,7 +7,7 @@ interface Props {
   onPress?: () => void;
 }
 
-const Button = ({label, style, onPress}: Props) => {
+const KakaoBtn = ({label, style, onPress}: Props) => {
   return (
     <StyleButton style={style} onPress={onPress}>
       <Label>{label}</Label>
@@ -15,7 +15,7 @@ const Button = ({label, style, onPress}: Props) => {
   );
 };
 
-export default Button;
+export default KakaoBtn;
 
 const StyleButton = Styled.TouchableOpacity`
   width: 100%;
@@ -24,9 +24,11 @@ const StyleButton = Styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   border: 1px;
-  border-color: #333333;
+  border-color: #FEE500;
+  /* background-color: #FEE500; */
 `;
 
 const Label = Styled.Text`
-  color: #FFFFFF;
+  color: #FEE500;
+  font-size: 16px;
 `;

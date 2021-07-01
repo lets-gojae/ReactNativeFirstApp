@@ -1,12 +1,23 @@
 import React, {createContext, useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 
+import {
+  KakaoOAuthToken,
+  KakaoProfile,
+  getProfile as getKakaoProfile,
+  login,
+  logout,
+  unlink,
+} from '@react-native-seoul/kakao-login';
+
 const defaultContext: IUserContext = {
   isLoading: false,
   userInfo: undefined,
-  login: (email: string, password: string) => {},
+  appLogin: (email: string, password: string) => {},
+  signInWithKakao: () => {},
+  result: 'string',
   // getUserInfo: () => {},
-  // logout: () => {},
+  logout: () => {},
 };
 
 const UserContext = createContext(defaultContext);
@@ -19,10 +30,10 @@ const UserContextProvider = ({children}: Props) => {
   const [userInfo, setUserInfo] = useState<IUserInfo | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const login = (email: string, password: string): void => {
+  const appLogin = (email: string, password: string): void => {
     //Use Email and Passsword for login API
     //Get token and UserInfo via Login API
-    AsyncStorage.setItem('token', 'save your token').then(() => {
+    AsyncStorage.setItem('accessToken', 'save your token').then(() => {
       setUserInfo({
         name: 'dev-yakuza',
         email: 'dev.yakuza@gmail.com',
@@ -31,12 +42,44 @@ const UserContextProvider = ({children}: Props) => {
     });
   };
 
+  const [result, setResult] = useState<string>('');
+
+  const signInWithKakao = async (): Promise<void> => {
+    const token: KakaoOAuthToken = await login();
+    setResult(token.accessToken);
+
+    try {
+      const result = await AsyncStorage.setItem('accessToken', 'result');
+      if (result !== null) {
+        console.log(token.accessToken);
+      }
+    } catch (e) {}
+    // await AsyncStorage.setItem('accessToken', 'result', () => {
+    //   console.log('저장');
+    // });
+  };
+
+  // const signOutWithKakao = async (): Promise<void> => {
+  //   const message = await logout();
+
+  //   setResult(message);
+  // };
+
+  const logout = (): void => {
+    AsyncStorage.removeItem('accessToken');
+    setUserInfo(undefined);
+    setResult('');
+  };
+
   return (
     <UserContext.Provider
       value={{
         isLoading,
         userInfo,
-        login,
+        appLogin,
+        signInWithKakao,
+        result,
+        logout,
       }}>
       {children}
     </UserContext.Provider>
