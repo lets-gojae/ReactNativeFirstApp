@@ -17,7 +17,7 @@ const defaultContext: IUserContext = {
   signInWithKakao: () => {},
   result: 'string',
   // getUserInfo: () => {},
-  logout: () => {},
+  signOut: () => {},
 };
 
 const UserContext = createContext(defaultContext);
@@ -50,36 +50,30 @@ const UserContextProvider = ({children}: Props) => {
 
     try {
       const result = await AsyncStorage.setItem('accessToken', 'result');
-      if (result !== null) {
-        console.log(token.accessToken);
-      }
     } catch (e) {}
-    // await AsyncStorage.setItem('accessToken', 'result', () => {
-    //   console.log('저장');
-    // });
   };
 
-  // const signOutWithKakao = async (): Promise<void> => {
-  //   const message = await logout();
-
-  //   setResult(message);
-  // };
-
-  const logout = (): void => {
-    AsyncStorage.removeItem('accessToken');
+  const signOut = async (): Promise<void> => {
+    await AsyncStorage.removeItem('accessToken');
     setUserInfo(undefined);
     setResult('');
   };
+
+  // const logout = (): void => {
+  //   AsyncStorage.removeItem('accessToken');
+  //   setUserInfo(undefined);
+  //   setResult('');
+  // };
 
   return (
     <UserContext.Provider
       value={{
         isLoading,
         userInfo,
+        result,
         appLogin,
         signInWithKakao,
-        result,
-        logout,
+        signOut,
       }}>
       {children}
     </UserContext.Provider>
