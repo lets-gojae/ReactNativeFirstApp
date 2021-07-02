@@ -35,12 +35,12 @@ const BigCatalogList = ({url, onPress}: Props) => {
         }}
         renderItem={({item, index}) => (
           <BigCatalog
-          // id={(item as IMovie).id}
-          // image={(item as IMovie).large_cover_image}
-          // year={(item as IMovie).year}
-          // title={(item as IMovie).title}
-          // genres={(item as IMovie).genres}
-          // onPress={onPress}
+            id={(item as IMovie).id}
+            image={(item as IMovie).large_cover_image}
+            year={(item as IMovie).year}
+            title={(item as IMovie).title}
+            genres={(item as IMovie).genres}
+            onPress={onPress}
           />
         )}
       />

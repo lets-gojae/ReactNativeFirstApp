@@ -2,9 +2,11 @@ import React, {useEffect, useLayoutEffect, useContext} from 'react';
 import Styled from 'styled-components/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {UserContext} from '~/Context/User';
+import {NavigationContainer} from '@react-navigation/native';
 
 import Button from '~/Components/Button';
-import {NavigationContainer} from '@react-navigation/native';
+import BitCatalogList from '~/Screens/MovieHome/BigCatalogList';
+import SubCatalogList from '~/Screens/MovieHome/SubCatalogList';
 
 type NavigationProp = StackNavigationProp<MovieNaviParamList, 'MovieHome'>;
 interface Props {
@@ -27,7 +29,41 @@ const MovieHome = ({navigation}: Props) => {
     });
   });
 
-  return <></>;
+  return (
+    <Container>
+      <BitCatalogList
+        url="https://yts.lt/api/v2/list_movies.json?sort_by=like_count&order_by=desc&limit=5"
+        onPress={(id: number) => {
+          navigation.navigate('MovieDetail', {id});
+        }}
+      />
+      <SubCatalogList
+        title="최신 등록순"
+        url="https://yts.lt/api/v2/list_movies.json?sort_by=date_added&order_by=desc&limit=10"
+        onPress={(id: number) => {
+          navigation.navigate('MovieDetail', {id});
+        }}
+      />
+      <SubCatalogList
+        title="평점순"
+        url="https://yts.lt/api/v2/list_movies.json?sort_by=rating&order_by=desc&limit=10"
+        onPress={(id: number) => {
+          navigation.navigate('MovieDetail', {
+            id,
+          });
+        }}
+      />
+      <SubCatalogList
+        title="다운로드순"
+        url="https://yts.lt/api/v2/list_movies.json?sort_by=download_count&order_by=desc&limit=10"
+        onPress={(id: number) => {
+          navigation.navigate('MovieDetail', {
+            id,
+          });
+        }}
+      />
+    </Container>
+  );
 };
 
 export default MovieHome;
