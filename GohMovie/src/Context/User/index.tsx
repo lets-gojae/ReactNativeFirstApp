@@ -16,7 +16,7 @@ const defaultContext: IUserContext = {
   appLogin: (email: string, password: string) => {},
   signInWithKakao: () => {},
   result: 'string',
-  // getUserInfo: () => {},
+  getUserInfo: () => {},
   signOut: () => {},
 };
 
@@ -46,11 +46,11 @@ const UserContextProvider = ({children}: Props) => {
 
   const signInWithKakao = async (): Promise<void> => {
     const token: KakaoOAuthToken = await login();
-    setResult(token.accessToken);
+    AsyncStorage.setItem('accessToken', token.accessToken).then(() => {
+      setResult(token.accessToken);
+    });
 
-    try {
-      const result = await AsyncStorage.setItem('accessToken', 'result');
-    } catch (e) {}
+    setIsLoading(true);
   };
 
   const signOut = async (): Promise<void> => {
@@ -59,11 +59,27 @@ const UserContextProvider = ({children}: Props) => {
     setResult('');
   };
 
-  // const logout = (): void => {
-  //   AsyncStorage.removeItem('accessToken');
-  //   setUserInfo(undefined);
-  //   setResult('');
-  // };
+  const getUserInfo = (): void => {
+    AsyncStorage.getItem('accessToken')
+      .then(value => {
+        if (value) {
+          setUserInfo({
+            name: 'dev-yakuza',
+            email: 'dev.yakuza@gmail.com',
+          });
+          setResult(value);
+        }
+        setIsLoading(true);
+      })
+      .catch(() => {
+        setUserInfo(undefined);
+        setIsLoading(true);
+      });
+  };
+
+  useEffect(() => {
+    getUserInfo();
+  }, []);
 
   return (
     <UserContext.Provider
@@ -74,6 +90,7 @@ const UserContextProvider = ({children}: Props) => {
         appLogin,
         signInWithKakao,
         signOut,
+        getUserInfo,
       }}>
       {children}
     </UserContext.Provider>

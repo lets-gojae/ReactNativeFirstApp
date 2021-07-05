@@ -4,8 +4,8 @@ import {RouteProp} from '@react-navigation/native';
 
 import Loading from '~/Screens/Loading';
 import BigCatalog from '~/Components/BigCatalog';
-// import CastList from './CastList';
-// import ScreenShotList from './ScreenShotList';
+import CastList from './CastList';
+import ScreenShotList from './ScreenShotList';
 
 type ProfileScreenRouteProp = RouteProp<MovieNaviParamList, 'MovieDetail'>;
 interface Props {
@@ -22,8 +22,8 @@ const MovieDetail = ({route}: Props) => {
     )
       .then(res => res.json())
       .then(json => {
-        console.log(json);
         setData(json.data.movie);
+        console.log(data);
       })
       .catch(err => {
         console.log(err);
@@ -32,10 +32,33 @@ const MovieDetail = ({route}: Props) => {
 
   return data ? (
     <Container>
-      <ContainerTitle>영화 정보</ContainerTitle>
-      <InfoContainer>
-        <LabelInfo>{data.runtime}분</LabelInfo>
-      </InfoContainer>
+      <BigCatalog
+        id={data.id}
+        image={data.large_cover_image}
+        year={data.year}
+        title={data.title}
+        genres={data.genres}
+      />
+      <SubInfoContainer>
+        <ContainerTitle>영화 정보</ContainerTitle>
+        <InfoContainer>
+          <LabelInfo>{data.runtime}분</LabelInfo>
+          <LabelInfo>평점: {data.rating}</LabelInfo>
+          <LabelInfo>좋아요: {data.like_count}</LabelInfo>
+        </InfoContainer>
+      </SubInfoContainer>
+      <DescriptionContainer>
+        <ContainerTitle>줄거리</ContainerTitle>
+        <Description>{data.description_full}</Description>
+      </DescriptionContainer>
+      {data.cast && <CastList cast={data.cast} />}
+      <ScreenShotList
+        images={[
+          data.large_screenshot_image1,
+          data.large_screenshot_image2,
+          data.large_screenshot_image3,
+        ]}
+      />
     </Container>
   ) : (
     <Loading />
