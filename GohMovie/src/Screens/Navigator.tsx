@@ -1,14 +1,13 @@
 import React, {useContext} from 'react';
-import {NavigationContainer, StackActions} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import AsyncStorage from '@react-native-community/async-storage';
-
 import {UserContext} from '~/Context/User';
 
 import Loading from '~/Screens/Loading';
 
 import Login from '~/Screens/Login';
 import MovieHome from '~/Screens/MovieHome';
+import MovieDetail from './MovieDetail';
 
 const Stack = createStackNavigator();
 
@@ -49,16 +48,32 @@ const MovieNavigator = () => {
           },
         }}
       />
+      <Stack.Screen
+        name="MovieDetail"
+        component={MovieDetail}
+        options={{
+          title: 'MOVIEAPP',
+          headerTintColor: '#E70915',
+          headerStyle: {
+            backgroundColor: '#141414',
+            borderBottomWidth: 0,
+          },
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          headerBackTitleVisible: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };
 
 export default () => {
-  const {result, userInfo} = useContext<IUserContext>(UserContext);
+  const {result, userInfo, isLoading} = useContext<IUserContext>(UserContext);
 
-  // if (isLoading === false) {
-  //   return <Loading />;
-  // }
+  if (isLoading === false) {
+    return <Loading />;
+  }
 
   return (
     <NavigationContainer>

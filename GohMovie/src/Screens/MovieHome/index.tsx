@@ -8,6 +8,8 @@ import Button from '~/Components/Button';
 import BitCatalogList from '~/Screens/MovieHome/BigCatalogList';
 import SubCatalogList from '~/Screens/MovieHome/SubCatalogList';
 
+import AsyncStorage from '@react-native-community/async-storage';
+
 type NavigationProp = StackNavigationProp<MovieNaviParamList, 'MovieHome'>;
 interface Props {
   navigation: NavigationProp;

@@ -9,6 +9,6 @@ interface IUserContext {
   result: string | undefined;
   appLogin: (email: string, password: string) => void;
   signInWithKakao: () => void;
-  // getUserInfo: () => void;
+  getUserInfo: () => void;
   signOut: () => void;
 }
