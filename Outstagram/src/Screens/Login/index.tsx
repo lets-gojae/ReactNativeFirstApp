@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Styled from 'styled-components/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 import Input from '~/Components/Input';
 import Button from '~/Components/Button';
 import KakaoBtn from '~/Components/KakaoBtn';
+import {UserContext} from '~/Context/User';
 
 type NavigationProp = StackNavigationProp<LoginNaviParamList, 'Login'>;
 interface Props {
@@ -14,6 +15,8 @@ interface Props {
 const Login = ({navigation}: Props) => {
   const [emailValue, setEmailValue] = useState<string>('');
   const [pwValue, setPwValue] = useState<string>('');
+
+  const {appLogin, signInWidthKakao} = useContext<IUserContext>(UserContext);
 
   useEffect(() => {
     console.log(pwValue);
@@ -51,9 +54,7 @@ const Login = ({navigation}: Props) => {
         <KakaoBtn
           label="카카오 로그인"
           style={{marginBottom: 24}}
-          onPress={() => {
-            // login('dev.yakuza@gmail.com', 'password');
-          }}
+          onPress={() => signInWidthKakao()}
         />
         <SignupText>
           계정이 없으신가요?

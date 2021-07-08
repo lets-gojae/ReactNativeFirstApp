@@ -9,10 +9,10 @@ interface Props {}
 
 const App = ({}: Props) => {
   return (
-    <>
+    <UserContextProvider>
       <StatusBar barStyle="default" />
       <Navigator />
-    </>
+    </UserContextProvider>
   );
 };
 
