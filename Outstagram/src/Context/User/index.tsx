@@ -1,12 +1,22 @@
 import React, {createContext, useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 
+import {
+  KakaoOAuthToken,
+  KakaoProfile,
+  getProfile as getKakaoProfile,
+  login,
+  logout,
+  unlink,
+} from '@react-native-seoul/kakao-login';
+
 const defaultContext: IUserContext = {
   isLoading: false,
   userInfo: undefined,
-  login: (email: string, password: string) => {},
+  appLogin: (email: string, password: string) => {},
+  signInWidthKakao: () => {},
   // getUserInfo: () => {},
-  // logout: () => {},
+  logout: () => {},
 };
 
 const UserContext = createContext(defaultContext);
@@ -19,7 +29,7 @@ const UserContextProvider = ({children}: Props) => {
   const [userInfo, setUserInfo] = useState<IUserInfo | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const login = (email: string, password: string): void => {
+  const appLogin = (email: string, password: string): void => {
     AsyncStorage.setItem('token', 'save your token').then(() => {
       setUserInfo({
         name: 'Goh',
@@ -29,11 +39,29 @@ const UserContextProvider = ({children}: Props) => {
     setIsLoading(true);
   };
 
+  const [result, setResult] = useState<string>('');
+
+  const signInWidthKakao = async (): Promise<void> => {
+    const token: KakaoOAuthToken = await login();
+    AsyncStorage.setItem('accessToken', token.accessToken).then(() => {
+      setResult(token.accessToken);
+    });
+
+    setIsLoading(true);
+  };
+
+  const logout = (): void => {
+    AsyncStorage.removeItem('accessToken');
+    setUserInfo(undefined);
+    setResult('');
+  };
+
   return (
-    <UserContext.Provider value={{login, isLoading, userInfo}}>
+    <UserContext.Provider
+      value={{appLogin, isLoading, userInfo, signInWidthKakao, logout}}>
       {children}
     </UserContext.Provider>
   );
 };
 
-export {UserContextProvider};
+export {UserContextProvider, UserContext};
