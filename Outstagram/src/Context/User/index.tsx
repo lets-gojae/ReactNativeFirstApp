@@ -13,6 +13,7 @@ import {
 const defaultContext: IUserContext = {
   isLoading: false,
   userInfo: undefined,
+  result: undefined,
   appLogin: (email: string, password: string) => {},
   signInWidthKakao: () => {},
   // getUserInfo: () => {},
@@ -58,7 +59,7 @@ const UserContextProvider = ({children}: Props) => {
 
   return (
     <UserContext.Provider
-      value={{appLogin, isLoading, userInfo, signInWidthKakao, logout}}>
+      value={{appLogin, isLoading, userInfo, result, signInWidthKakao, logout}}>
       {children}
     </UserContext.Provider>
   );
