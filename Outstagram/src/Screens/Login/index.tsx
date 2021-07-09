@@ -5,6 +5,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import Input from '~/Components/Input';
 import Button from '~/Components/Button';
 import KakaoBtn from '~/Components/KakaoBtn';
+import NaverBtn from '~/Components/NaverBtn';
 import {UserContext} from '~/Context/User';
 
 type NavigationProp = StackNavigationProp<LoginNaviParamList, 'Login'>;
@@ -47,15 +48,16 @@ const Login = ({navigation}: Props) => {
             backgroundColor: pwValue && emailValue ? '#3796EF' : '#9fc6eb',
           }}
           onPress={() => {
-            // login('dev.yakuza@gmail.com', 'password');
+            appLogin('dev.yakuza@gmail.com', 'password');
           }}
         />
         <SocialLogin>소셜계정으로 로그인</SocialLogin>
         <KakaoBtn
           label="카카오 로그인"
-          style={{marginBottom: 24}}
+          style={{marginBottom: 8}}
           onPress={() => signInWidthKakao()}
         />
+        <NaverBtn label="네이버 로그인" style={{marginBottom: 24}} />
         <SignupText>
           계정이 없으신가요?
           <SignupLink onPress={() => navigation.navigate('Signup')}>
@@ -100,7 +102,7 @@ const PasswordReset = Styled.Text`
 `;
 
 const SocialLogin = Styled.Text`
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   color: #929292;
 `;
 
