@@ -16,10 +16,37 @@ interface Props {
 }
 
 const MyFeed = ({navigation}: Props) => {
+  // const {getMyFeed} = useContext(RandomUserDataContext);
+  const [feedList, setFeedList] = useState<Array<IFeed>>([]);
+  const [storyList, setStoryList] = useState<Array<IFeed>>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => <IconButton iconName="camera" />,
+      headerRight: () => (
+        <HeaderRightContainer>
+          <IconButton iconName="live" />
+          <IconButton iconName="send" />
+        </HeaderRightContainer>
+      ),
+    });
+  }, []);
+
+  // useEffect(() => {
+  //   setFeedList(getMyFeed());
+  //   setStoryList(getMyFeed());
+  //   SplashScreen.hide();
+  // }, []);
+
   return <Container></Container>;
 };
 
 export default MyFeed;
 
 const Container = Styled.View`
+`;
+
+const HeaderRightContainer = Styled.View`
+  flex-direction: row;
 `;

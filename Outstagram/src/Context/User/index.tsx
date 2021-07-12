@@ -1,4 +1,5 @@
 import React, {createContext, useState, useEffect} from 'react';
+import {Platform} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import {
@@ -9,15 +10,34 @@ import {
   logout,
   unlink,
 } from '@react-native-seoul/kakao-login';
+import {NaverLogin, getProfile} from '@react-native-seoul/naver-login';
+
+// const iosKeys = {
+//   kConsumerKey: 'DidEHA_hGKxTk0x_TKzH',
+//   kConsumerSecret: 'pWswySc6qW',
+//   kServiceAppName: 'Outstagram',
+//   kServiceAppUrlScheme: 'outstagram', // only for iOS
+// };
+
+// const androidKeys = {
+//   kConsumerKey: 'DidEHA_hGKxTk0x_TKzH',
+//   kConsumerSecret: 'pWswySc6qW',
+//   kServiceAppName: 'Outstagram',
+// };
+
+// const initials = Platform.OS === 'ios' ? iosKeys : androidKeys;
 
 const defaultContext: IUserContext = {
   isLoading: false,
+  // initials: undefined,
   userInfo: undefined,
-  result: undefined,
+  kakaoToken: undefined,
+  naverToken: undefined,
   appLogin: (email: string, password: string) => {},
   signInWidthKakao: () => {},
-  // getUserInfo: () => {},
+  naverLogin: (props: any) => {},
   logout: () => {},
+  // getUserInfo: () => {},
 };
 
 const UserContext = createContext(defaultContext);
@@ -40,26 +60,74 @@ const UserContextProvider = ({children}: Props) => {
     setIsLoading(true);
   };
 
-  const [result, setResult] = useState<string>('');
+  const [kakaoToken, setKakaoToken] = useState<string>('');
 
   const signInWidthKakao = async (): Promise<void> => {
     const token: KakaoOAuthToken = await login();
     AsyncStorage.setItem('accessToken', token.accessToken).then(() => {
-      setResult(token.accessToken);
+      setKakaoToken(token.accessToken);
     });
 
     setIsLoading(true);
   };
 
+  const [naverToken, setNaverToken] = useState<string>('');
+
+  const naverLogin = (props: any) => {
+    return new Promise((resolve, reject) => {
+      NaverLogin.login(props, (err, token) => {
+        console.log(`\n\n  Token is fetched  :: ${token?.accessToken} \n\n`);
+
+        AsyncStorage.setItem(
+          'accessToken',
+          JSON.stringify(token?.accessToken),
+        ).then(() => {
+          setNaverToken(JSON.stringify(token?.accessToken));
+        });
+
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve(token);
+      });
+    });
+  };
+
+  // useEffect(() => {
+  //   AsyncStorage.getItem('accessToken').then(value => console.log(value));
+  // });
+
+  // const getUserProfile = async () => {
+  //   const profileResult = await getProfile(naverToken.accessToken);
+  //   if (profileResult.resultcode === "024") {
+  //     Alert.alert("로그인 실패", profileResult.message);
+  //     return;
+  //   }
+  //   console.log("profileResult", profileResult);
+  // };
+
   const logout = (): void => {
     AsyncStorage.removeItem('accessToken');
+    NaverLogin.logout();
     setUserInfo(undefined);
-    setResult('');
+    setKakaoToken('');
+    setNaverToken('');
   };
 
   return (
     <UserContext.Provider
-      value={{appLogin, isLoading, userInfo, result, signInWidthKakao, logout}}>
+      value={{
+        appLogin,
+        isLoading,
+        userInfo,
+        kakaoToken,
+        naverToken,
+        // initials,
+        signInWidthKakao,
+        naverLogin,
+        logout,
+      }}>
       {children}
     </UserContext.Provider>
   );

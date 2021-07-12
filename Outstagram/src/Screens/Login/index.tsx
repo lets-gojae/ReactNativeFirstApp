@@ -17,11 +17,8 @@ const Login = ({navigation}: Props) => {
   const [emailValue, setEmailValue] = useState<string>('');
   const [pwValue, setPwValue] = useState<string>('');
 
-  const {appLogin, signInWidthKakao} = useContext<IUserContext>(UserContext);
-
-  useEffect(() => {
-    console.log(pwValue);
-  });
+  const {appLogin, signInWidthKakao, naverLogin, logout} =
+    useContext<IUserContext>(UserContext);
 
   return (
     <Container>
@@ -57,7 +54,16 @@ const Login = ({navigation}: Props) => {
           style={{marginBottom: 8}}
           onPress={() => signInWidthKakao()}
         />
-        <NaverBtn label="네이버 로그인" style={{marginBottom: 24}} />
+        <NaverBtn
+          label="네이버 로그인"
+          style={{marginBottom: 24}}
+          onPress={() => naverLogin()}
+        />
+        <NaverBtn
+          label="로그아웃"
+          style={{marginBottom: 24}}
+          onPress={() => logout()}
+        />
         <SignupText>
           계정이 없으신가요?
           <SignupLink onPress={() => navigation.navigate('Signup')}>

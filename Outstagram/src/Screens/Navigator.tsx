@@ -70,7 +70,7 @@ const ProfileTab = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Progile"
+        name="Profile"
         component={Profile}
         options={{title: 'Profile'}}
       />
@@ -170,7 +170,8 @@ const MainNavigator = () => {
 };
 
 export default () => {
-  const {isLoading, userInfo, result} = useContext<IUserContext>(UserContext);
+  const {isLoading, userInfo, kakaoToken, naverToken} =
+    useContext<IUserContext>(UserContext);
 
   // if (isLoading === false) {
   //   return <Loading />;
@@ -178,7 +179,11 @@ export default () => {
 
   return (
     <NavigationContainer>
-      {userInfo || result ? <MainNavigator /> : <LoginNavigator />}
+      {userInfo || kakaoToken || naverToken ? (
+        <MainNavigator />
+      ) : (
+        <LoginNavigator />
+      )}
     </NavigationContainer>
   );
 };
