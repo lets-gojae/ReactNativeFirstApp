@@ -25,9 +25,11 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>naverlogin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>kakao2def53a999eb7440e962cd47c3ee1a41</string>
+				<string>outstagram</string>
 			</array>
 		</dict>
 	</array>
@@ -37,6 +39,8 @@
 	<string>2def53a999eb7440e962cd47c3ee1a41</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>naversearchapp</string>
+		<string>naversearchthirdlogin</string>
 		<string>kakaokompassauth</string>
 		<string>storykompassauth</string>
 		<string>kakaolink</string>
