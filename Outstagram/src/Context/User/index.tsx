@@ -12,24 +12,18 @@ import {
 } from '@react-native-seoul/kakao-login';
 import {NaverLogin, getProfile} from '@react-native-seoul/naver-login';
 
-// const iosKeys = {
-//   kConsumerKey: 'DidEHA_hGKxTk0x_TKzH',
-//   kConsumerSecret: 'pWswySc6qW',
-//   kServiceAppName: 'Outstagram',
-//   kServiceAppUrlScheme: 'outstagram', // only for iOS
-// };
+const iosKeys = {
+  kConsumerKey: 'DidEHA_hGKxTk0x_TKzH',
+  kConsumerSecret: 'pWswySc6qW',
+  kServiceAppName: 'Outstagram',
+  kServiceAppUrlScheme: 'outstagram', // only for iOS
+};
 
-// const androidKeys = {
-//   kConsumerKey: 'DidEHA_hGKxTk0x_TKzH',
-//   kConsumerSecret: 'pWswySc6qW',
-//   kServiceAppName: 'Outstagram',
-// };
-
-// const initials = Platform.OS === 'ios' ? iosKeys : androidKeys;
+const initials = Platform.OS === 'ios' && iosKeys;
 
 const defaultContext: IUserContext = {
   isLoading: false,
-  // initials: undefined,
+  initials: undefined,
   userInfo: undefined,
   kakaoToken: undefined,
   naverToken: undefined,
@@ -123,7 +117,7 @@ const UserContextProvider = ({children}: Props) => {
         userInfo,
         kakaoToken,
         naverToken,
-        // initials,
+        initials,
         signInWidthKakao,
         naverLogin,
         logout,
