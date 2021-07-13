@@ -17,7 +17,7 @@ const Login = ({navigation}: Props) => {
   const [emailValue, setEmailValue] = useState<string>('');
   const [pwValue, setPwValue] = useState<string>('');
 
-  const {appLogin, signInWidthKakao, naverLogin, logout} =
+  const {appLogin, signInWidthKakao, naverLogin, logout, initials} =
     useContext<IUserContext>(UserContext);
 
   return (
@@ -57,7 +57,7 @@ const Login = ({navigation}: Props) => {
         <NaverBtn
           label="네이버 로그인"
           style={{marginBottom: 24}}
-          onPress={() => naverLogin()}
+          onPress={() => naverLogin(initials)}
         />
         <NaverBtn
           label="로그아웃"
