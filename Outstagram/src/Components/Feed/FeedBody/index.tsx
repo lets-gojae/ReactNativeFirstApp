@@ -41,6 +41,32 @@ const FeedBody = ({id, images}: Props) => {
           </ImageContainer>
         ))}
       </ScrollView>
+      <FeedMenuContainer>
+        <MenuContainer>
+          <IconButton iconName="favorite" />
+          <IconButton iconName="comment" />
+          <IconButton iconName="send" />
+        </MenuContainer>
+        <MenuContainer>
+          <FeedImageIndicatorContainer>
+            {imageLength > 1 &&
+              images.map((item, index) => (
+                <FeedImageIndicator
+                  key={`FeedImageIndicator-${id}-${index}`}
+                  style={{
+                    backgroundColor:
+                      indicatorIndex >= index && indicatorIndex < index + 1
+                        ? '#3796EF'
+                        : '#D3D3D3',
+                  }}
+                />
+              ))}
+          </FeedImageIndicatorContainer>
+        </MenuContainer>
+        <MenuContainer style={{justifyContent: 'flex-end'}}>
+          <IconButton iconName="bookmark" />
+        </MenuContainer>
+      </FeedMenuContainer>
     </Container>
   );
 };

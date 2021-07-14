@@ -8,7 +8,7 @@ import {RandomUserDataContext} from '~/Context/RandomUserData';
 import IconButton from '~/Components/IconButton';
 import Feed from '~/Components/Feed';
 
-// import StoryList from './StoryList';
+import StoryList from './StoryList';
 
 type NavigationProp = StackNavigationProp<MyFeedTabParamList, 'MyFeed'>;
 interface Props {
@@ -59,7 +59,7 @@ const MyFeed = ({navigation}: Props) => {
       }}
       onEndReachedThreshold={0.5}
       refreshing={loading}
-      // ListHeaderComponent={<StoryList storyList={storyList} />}
+      ListHeaderComponent={<StoryList storyList={storyList} />}
       renderItem={({item, index}) => (
         <Feed
           id={index}
