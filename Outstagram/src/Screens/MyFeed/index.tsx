@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState, useEffect, useLayoutEffect} from 'react';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {FlatList} from 'react-native';
 import Styled from 'styled-components/native';
@@ -21,7 +21,7 @@ const MyFeed = ({navigation}: Props) => {
   const [storyList, setStoryList] = useState<Array<IFeed>>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => <IconButton iconName="camera" />,
       headerRight: () => (

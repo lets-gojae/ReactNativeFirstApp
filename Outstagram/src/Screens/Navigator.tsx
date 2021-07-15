@@ -6,15 +6,20 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {UserContext} from '~/Context/User';
+import SearchBar from '~/Components/SearchBar';
 import Loading from '~/Components/Loading';
 
 import Login from '~/Screens/Login';
+// import PasswordReset from '~/Screens/PasswordReset';
+// import Signup from '~/Screens/Signup';
 
 import MyFeed from '~/Screens/MyFeed';
 import Feeds from '~/Screens/Feeds';
+import FeedListOnly from '~/Screens/FeedListOnly';
 import Upload from '~/Screens/Upload';
 import Notification from '~/Screens/Notification';
 import Profile from '~/Screens/Profile';
+import CustomDrawer from '~/Screens/Drawer';
 
 const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -24,6 +29,8 @@ const LoginNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Login" component={Login} />
+      {/* <Stack.Screen name="Signup" component={Signup} />
+      <Stack.Screen name="PasswordReset" component={PasswordReset} /> */}
     </Stack.Navigator>
   );
 };
@@ -46,9 +53,18 @@ const FeedsTab = () => {
       <Stack.Screen
         name="Feeds"
         component={Feeds}
-        // options={{
-        //   header: () => <SearchBar />,
-        // }}
+        options={{
+          header: () => <SearchBar />,
+        }}
+      />
+      <Stack.Screen
+        name="FeedListOnly"
+        component={FeedListOnly}
+        options={{
+          headerBackTitleVisible: false,
+          title: '둘러보기',
+          headerTintColor: '#292929',
+        }}
       />
     </Stack.Navigator>
   );
@@ -60,7 +76,7 @@ const UploadTab = () => {
       <Stack.Screen
         name="Upload"
         component={Upload}
-        options={{title: 'Profile'}}
+        options={{title: '사진 업로드'}}
       />
     </Stack.Navigator>
   );
@@ -163,7 +179,10 @@ const MainTabs = () => {
 
 const MainNavigator = () => {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator
+      drawerPosition="right"
+      drawerType="slide"
+      drawerContent={props => <CustomDrawer props={props} />}>
       <Drawer.Screen name="MainTab" component={MainTabs} />
     </Drawer.Navigator>
   );

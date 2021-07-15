@@ -15,7 +15,6 @@ const SearchBar = () => {
 export default SearchBar;
 
 const Container = Styled.SafeAreaView`
-  flex: 1;
   flex-direction: row;
   align-items: center;
   background-color: #FEFFFF;
