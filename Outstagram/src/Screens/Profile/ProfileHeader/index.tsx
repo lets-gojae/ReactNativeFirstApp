@@ -3,35 +3,6 @@ import Styled from 'styled-components/native';
 
 import Button from '~/Components/Button';
 
-const Container = Styled.View`
-  flex-direction: row;
-`;
-const ProfileImageContainer = Styled.View`
-  padding: 16px;
-`;
-const ProfileImage = Styled.Image`
-  border-radius: 100px;
-`;
-const ProfileContent = Styled.View`
-  flex: 1;
-  padding: 16px;
-  justify-content: space-around;
-`;
-const LabelContainer = Styled.View`
-  flex-direction: row;
-`;
-
-const ProfileItem = Styled.View`
-  flex: 1;
-  align-items: center;
-`;
-const LabelCount = Styled.Text`
-  font-size: 16px;
-  font-weight: bold;
-`;
-const LabelTitle = Styled.Text`
-  font-weight: 300;
-`;
 interface Props {
   image: string;
   posts: number;
@@ -56,7 +27,7 @@ const ProfileHeader = ({image, posts, follower, following}: Props) => {
             <LabelTitle>팔로워</LabelTitle>
           </ProfileItem>
           <ProfileItem>
-            <LabelCount>{follower}</LabelCount>
+            <LabelCount>{following}</LabelCount>
             <LabelTitle>팔로잉</LabelTitle>
           </ProfileItem>
         </LabelContainer>
@@ -77,3 +48,39 @@ const ProfileHeader = ({image, posts, follower, following}: Props) => {
 };
 
 export default ProfileHeader;
+
+const Container = Styled.View`
+  flex-direction: row;
+`;
+
+const ProfileImageContainer = Styled.View`
+  padding: 16px;
+`;
+
+const ProfileImage = Styled.Image`
+  border-radius: 100px;
+`;
+
+const ProfileContent = Styled.View`
+  flex: 1;
+  padding: 16px;
+  justify-content: space-around;
+`;
+
+const LabelContainer = Styled.View`
+  flex-direction: row;
+`;
+
+const ProfileItem = Styled.View`
+  flex: 1;
+  align-items: center;
+`;
+
+const LabelCount = Styled.Text`
+  font-size: 16px;
+  font-weight: bold;
+`;
+
+const LabelTitle = Styled.Text`
+  font-weight: 300;
+`;
