@@ -10,8 +10,8 @@ import SearchBar from '~/Components/SearchBar';
 import Loading from '~/Components/Loading';
 
 import Login from '~/Screens/Login';
-// import PasswordReset from '~/Screens/PasswordReset';
-// import Signup from '~/Screens/Signup';
+import PasswordReset from '~/Screens/PasswordReset';
+import Signup from '~/Screens/Signup';
 
 import MyFeed from '~/Screens/MyFeed';
 import Feeds from '~/Screens/Feeds';
@@ -29,8 +29,8 @@ const LoginNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Login" component={Login} />
-      {/* <Stack.Screen name="Signup" component={Signup} />
-      <Stack.Screen name="PasswordReset" component={PasswordReset} /> */}
+      <Stack.Screen name="Signup" component={Signup} />
+      <Stack.Screen name="PasswordReset" component={PasswordReset} />
     </Stack.Navigator>
   );
 };
@@ -192,9 +192,9 @@ export default () => {
   const {isLoading, userInfo, kakaoToken, naverToken} =
     useContext<IUserContext>(UserContext);
 
-  // if (isLoading === false) {
-  //   return <Loading />;
-  // }
+  if (isLoading === false) {
+    return <Loading />;
+  }
 
   return (
     <NavigationContainer>

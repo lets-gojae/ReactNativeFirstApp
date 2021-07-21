@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import Styled from 'styled-components/native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import SplashScreen from 'react-native-splash-screen';
 
 import Input from '~/Components/Input';
 import Button from '~/Components/Button';
@@ -17,8 +18,12 @@ const Login = ({navigation}: Props) => {
   const [emailValue, setEmailValue] = useState<string>('');
   const [pwValue, setPwValue] = useState<string>('');
 
-  const {appLogin, signInWidthKakao, naverLogin, logout, initials} =
+  const {appLogin, signInWidthKakao, naverLogin, initials} =
     useContext<IUserContext>(UserContext);
+
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
 
   return (
     <Container>
@@ -44,8 +49,9 @@ const Login = ({navigation}: Props) => {
             marginBottom: 24,
             backgroundColor: pwValue && emailValue ? '#3796EF' : '#9fc6eb',
           }}
+          disabled={!emailValue || !pwValue}
           onPress={() => {
-            appLogin('dev.yakuza@gmail.com', 'password');
+            appLogin('sis9410@gmail.com', 'password');
           }}
         />
         <SocialLogin>소셜계정으로 로그인</SocialLogin>
@@ -58,11 +64,6 @@ const Login = ({navigation}: Props) => {
           label="네이버 로그인"
           style={{marginBottom: 24}}
           onPress={() => naverLogin(initials)}
-        />
-        <NaverBtn
-          label="로그아웃"
-          style={{marginBottom: 24}}
-          onPress={() => logout()}
         />
         <SignupText>
           계정이 없으신가요?
