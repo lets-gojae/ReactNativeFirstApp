@@ -1,5 +1,5 @@
 interface IUserInfo {
-  name: string;
+  password: string;
   email: string;
 }
 
@@ -9,9 +9,9 @@ interface IUserContext {
   initials: any;
   kakaoToken: string | undefined;
   naverToken: string | undefined;
+  naverLogin: any;
   appLogin: (email: string, password: string) => void;
   signInWidthKakao: () => void;
-  naverLogin: any;
-  // getUserInfo: () => void;
+  getUserInfo: () => void;
   logout: () => void;
 }

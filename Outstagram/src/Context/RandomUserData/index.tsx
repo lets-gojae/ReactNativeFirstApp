@@ -63,7 +63,6 @@ const RandomUserDataProvider = ({cache, children}: Props) => {
 
   const setDescriptions = async () => {
     const cachedData = await getCacheData('DescriptionList');
-    console.log(cachedData);
     if (cachedData) {
       setDescriptionList(cachedData);
       return;
@@ -147,9 +146,6 @@ const RandomUserDataProvider = ({cache, children}: Props) => {
     return feeds;
   };
 
-  console.log(
-    `${userList.length} / ${descriptionList.length} / ${imageList.length}`,
-  );
   return (
     <RandomUserDataContext.Provider
       value={{

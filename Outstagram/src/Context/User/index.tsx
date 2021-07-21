@@ -16,7 +16,7 @@ const iosKeys = {
   kConsumerKey: 'DidEHA_hGKxTk0x_TKzH',
   kConsumerSecret: 'pWswySc6qW',
   kServiceAppName: 'Outstagram',
-  kServiceAppUrlScheme: 'outstagram', // only for iOS
+  kServiceAppUrlScheme: 'outstagram',
 };
 
 const initials = Platform.OS === 'ios' && iosKeys;
@@ -31,7 +31,7 @@ const defaultContext: IUserContext = {
   signInWidthKakao: () => {},
   naverLogin: (props: any) => {},
   logout: () => {},
-  // getUserInfo: () => {},
+  getUserInfo: () => {},
 };
 
 const UserContext = createContext(defaultContext);
@@ -45,10 +45,10 @@ const UserContextProvider = ({children}: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const appLogin = (email: string, password: string): void => {
-    AsyncStorage.setItem('token', 'save your token').then(() => {
+    AsyncStorage.setItem('accessToken', 'save your token').then(() => {
       setUserInfo({
-        name: 'Goh',
-        email: 'Goh.yakuza@gmail.com',
+        email: 'sis9410@gmail.com',
+        password: 'password',
       });
     });
     setIsLoading(true);
@@ -70,8 +70,6 @@ const UserContextProvider = ({children}: Props) => {
   const naverLogin = (props: any) => {
     return new Promise((resolve, reject) => {
       NaverLogin.login(props, (err, token) => {
-        console.log(`\n\n  Token is fetched  :: ${token?.accessToken} \n\n`);
-
         AsyncStorage.setItem(
           'accessToken',
           JSON.stringify(token?.accessToken),
@@ -88,19 +86,6 @@ const UserContextProvider = ({children}: Props) => {
     });
   };
 
-  // useEffect(() => {
-  //   AsyncStorage.getItem('accessToken').then(value => console.log(value));
-  // });
-
-  // const getUserProfile = async () => {
-  //   const profileResult = await getProfile(naverToken.accessToken);
-  //   if (profileResult.resultcode === "024") {
-  //     Alert.alert("로그인 실패", profileResult.message);
-  //     return;
-  //   }
-  //   console.log("profileResult", profileResult);
-  // };
-
   const logout = (): void => {
     AsyncStorage.removeItem('accessToken');
     NaverLogin.logout();
@@ -109,18 +94,44 @@ const UserContextProvider = ({children}: Props) => {
     setNaverToken('');
   };
 
+  const getUserInfo = (): void => {
+    AsyncStorage.getItem('accessToken')
+      .then(value => {
+        if (value) {
+          setUserInfo({
+            email: 'sis9410@gmail.com',
+            password: 'password',
+          });
+          setKakaoToken(value);
+          setNaverToken(value);
+        }
+        setIsLoading(true);
+      })
+      .catch(() => {
+        setKakaoToken('');
+        setNaverToken('');
+        setUserInfo(undefined);
+        setIsLoading(true);
+      });
+  };
+
+  useEffect(() => {
+    getUserInfo();
+  }, []);
+
   return (
     <UserContext.Provider
       value={{
-        appLogin,
         isLoading,
         userInfo,
         kakaoToken,
         naverToken,
         initials,
+        appLogin,
         signInWidthKakao,
         naverLogin,
         logout,
+        getUserInfo,
       }}>
       {children}
     </UserContext.Provider>

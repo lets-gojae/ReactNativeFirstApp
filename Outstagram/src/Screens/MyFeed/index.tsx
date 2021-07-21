@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect, useLayoutEffect} from 'react';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {FlatList} from 'react-native';
 import Styled from 'styled-components/native';
-// import SplashScreen from 'react-native-splash-screen';
+import SplashScreen from 'react-native-splash-screen';
 
 import {RandomUserDataContext} from '~/Context/RandomUserData';
 import IconButton from '~/Components/IconButton';
@@ -36,7 +36,7 @@ const MyFeed = ({navigation}: Props) => {
   useEffect(() => {
     setFeedList(getMyFeed());
     setStoryList(getMyFeed());
-    // SplashScreen.hide();
+    SplashScreen.hide();
   }, []);
 
   return (
