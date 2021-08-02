@@ -1,6 +1,5 @@
 import React from 'react';
 import {Image} from 'react-native';
-import Styled from 'styled-components/native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -8,9 +7,10 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {Theme} from '~/styles/Theme';
-import {Mixin} from '~/styles/Mixin';
 
-import Login from '~/Screens/Login';
+import LoginTab from '~/Navigation/LoginNavigator';
+import FindId from '~/Screens/Login/FindId';
+import FindPw from '~/Screens/Login/FindPw';
 
 import HomeRecommend from '~/Screens/AppHome/CurryRecommend';
 import NewProduct from '~/Screens/AppHome/NewProduct';
@@ -21,6 +21,8 @@ import Recommend from '~/Screens/BottomTab/Recommend';
 import Category from '~/Screens/BottomTab/Category';
 import Search from '~/Screens/BottomTab/Search';
 import MyCurry from '~/Screens/BottomTab/MyCurry';
+
+import Login from '~/Screens/Login';
 
 const Stack = createStackNavigator();
 const MainTabStack = createMaterialTopTabNavigator();
@@ -50,12 +52,6 @@ const HomeTabNavi = () => {
     </MainTabStack.Navigator>
   );
 };
-
-// const ImageHeader = () => {
-//   <ImageContainer>
-//     <StyledImage source={require('~/Assets/Image/logo_text.png')} />
-//   </ImageContainer>;
-// };
 
 const HomeTab = () => {
   return (
@@ -154,7 +150,7 @@ const MyCurryTab = () => {
   );
 };
 
-const MainNavigator = () => {
+const BottomNavigator = () => {
   return (
     <BottomTab.Navigator
       tabBarOptions={{
@@ -236,31 +232,38 @@ const MainNavigator = () => {
   );
 };
 
+const MainNavigator = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerBackTitleVisible: false,
+        headerTintColor: '#2e2e2e',
+      }}>
+      <Stack.Screen
+        name="BottomNavi"
+        component={BottomNavigator}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="LoginModal"
+        component={LoginTab}
+        options={{
+          headerShown: false,
+          title: '로그인',
+          headerStyle: {
+            borderBottomWidth: 1,
+            borderBottomColor: '#D3D3D3',
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 export default () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="main"
-          component={MainNavigator}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="loginModal"
-          component={Login}
-          options={{
-            headerBackTitleVisible: false,
-            headerTintColor: '#2e2e2e',
-            title: '로그인',
-            // headerTransparent: true,
-            headerStyle: {
-              borderBottomWidth: 1,
-              borderBottomColor: '#D3D3D3',
-              marginLeft: 10,
-            },
-          }}
-        />
-      </Stack.Navigator>
+      <MainNavigator />
     </NavigationContainer>
   );
 };

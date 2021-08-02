@@ -14,6 +14,7 @@
 		3ACBA06979CA94A80BA99D1B /* libPods-Marketcurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 024139BB59D9E103BBA75522 /* libPods-Marketcurry.a */; };
 		61FCED76B2925AD0021398F9 /* libPods-Marketcurry-MarketcurryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EE8B5F601F2D214E191F941 /* libPods-Marketcurry-MarketcurryTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		F45139FE26B7EDAA00B3344B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45139FD26B7EDAA00B3344B /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		D169BC2CC3E8E376C9E382A4 /* Pods-Marketcurry.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marketcurry.release.xcconfig"; path = "Target Support Files/Pods-Marketcurry/Pods-Marketcurry.release.xcconfig"; sourceTree = "<group>"; };
 		E2D601CEC615CCCF4D59BD12 /* Pods-Marketcurry-MarketcurryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marketcurry-MarketcurryTests.release.xcconfig"; path = "Target Support Files/Pods-Marketcurry-MarketcurryTests/Pods-Marketcurry-MarketcurryTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F45139FC26B7EDAA00B3344B /* Marketcurry-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Marketcurry-Bridging-Header.h"; sourceTree = "<group>"; };
+		F45139FD26B7EDAA00B3344B /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +95,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				F45139FD26B7EDAA00B3344B /* File.swift */,
+				F45139FC26B7EDAA00B3344B /* Marketcurry-Bridging-Header.h */,
 			);
 			name = Marketcurry;
 			sourceTree = "<group>";
@@ -207,7 +212,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -411,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				F45139FE26B7EDAA00B3344B /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 234362D2F48B7DBC718B877F /* Pods-Marketcurry-MarketcurryTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -457,6 +464,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E2D601CEC615CCCF4D59BD12 /* Pods-Marketcurry-MarketcurryTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = MarketcurryTests/Info.plist;
@@ -495,8 +503,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Marketcurry.test;
 				PRODUCT_NAME = Marketcurry;
+				SWIFT_OBJC_BRIDGING_HEADER = "Marketcurry-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -520,8 +529,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Marketcurry.test;
 				PRODUCT_NAME = Marketcurry;
+				SWIFT_OBJC_BRIDGING_HEADER = "Marketcurry-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -583,7 +593,6 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -641,7 +650,6 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
