@@ -8,7 +8,7 @@ interface Props {
   onPress?: () => void;
 }
 
-const KakaoBtn = ({label, style, onPress}: Props) => {
+const NaverBtn = ({label, style, onPress}: Props) => {
   return (
     <StyledButton style={style} onPress={onPress}>
       <Label>{label}</Label>
@@ -16,7 +16,7 @@ const KakaoBtn = ({label, style, onPress}: Props) => {
   );
 };
 
-export default KakaoBtn;
+export default NaverBtn;
 
 const StyledButton = Styled.TouchableOpacity`
 width: 100%;
@@ -24,7 +24,7 @@ height: 40px;
 border-radius: 4px
 justify-content: center;
 align-items: center;
-background-color: #F7E600;
+background-color: #2DB400;
 `;
 
 const Label = Styled.Text`

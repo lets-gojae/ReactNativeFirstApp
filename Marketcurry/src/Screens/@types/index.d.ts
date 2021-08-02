@@ -1,7 +1,11 @@
-type NaviParamList = {
-  goBack: undefined;
-};
+// type NaviParamList = {
+//   goBack: undefined;
+// };
 
 type LoginNaviParamList = {
-  loginModal: undefined;
+  LoginModal: undefined;
+  LoginNavigator: undefined;
+  FindId: undefined;
+  FindPw: undefined;
+  Signup: undefined;
 };
