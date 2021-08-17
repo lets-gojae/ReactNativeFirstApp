@@ -45,12 +45,13 @@ const Container = Styled.View`
   padding-left: 16px;
   padding-right: 16px;
   border-radius: 4px;
-  background-color: #FAFAFA;
+  background-color: #ffffff;
   border-width: 1px;
   border-color: #D3D3D3;
 `;
 
 const InputField = Styled.TextInput`
   flex: 1;
+  font-size: 16px;
   color: #292929;
 `;

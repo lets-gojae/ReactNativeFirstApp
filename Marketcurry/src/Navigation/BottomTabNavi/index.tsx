@@ -1,16 +1,14 @@
 import React from 'react';
 import {Image} from 'react-native';
 
-import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {Theme} from '~/styles/Theme';
 
-import LoginTab from '~/Navigation/LoginNavigator';
-import FindId from '~/Screens/Login/FindId';
-import FindPw from '~/Screens/Login/FindPw';
+// import LoginTab from '~/Navigation/LoginStackNavi';
+// import MyCurryStack from '~/Navigation/MyCurryTabNavi';
 
 import HomeRecommend from '~/Screens/AppHome/CurryRecommend';
 import NewProduct from '~/Screens/AppHome/NewProduct';
@@ -21,8 +19,6 @@ import Recommend from '~/Screens/BottomTab/Recommend';
 import Category from '~/Screens/BottomTab/Category';
 import Search from '~/Screens/BottomTab/Search';
 import MyCurry from '~/Screens/BottomTab/MyCurry';
-
-import Login from '~/Screens/Login';
 
 const Stack = createStackNavigator();
 const MainTabStack = createMaterialTopTabNavigator();
@@ -150,7 +146,7 @@ const MyCurryTab = () => {
   );
 };
 
-const BottomNavigator = () => {
+export default function BottomNavigator() {
   return (
     <BottomTab.Navigator
       tabBarOptions={{
@@ -230,40 +226,4 @@ const BottomNavigator = () => {
       />
     </BottomTab.Navigator>
   );
-};
-
-const MainNavigator = () => {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerBackTitleVisible: false,
-        headerTintColor: '#2e2e2e',
-      }}>
-      <Stack.Screen
-        name="BottomNavi"
-        component={BottomNavigator}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="LoginModal"
-        component={LoginTab}
-        options={{
-          headerShown: false,
-          title: '로그인',
-          headerStyle: {
-            borderBottomWidth: 1,
-            borderBottomColor: '#D3D3D3',
-          },
-        }}
-      />
-    </Stack.Navigator>
-  );
-};
-
-export default () => {
-  return (
-    <NavigationContainer>
-      <MainNavigator />
-    </NavigationContainer>
-  );
-};
+}
