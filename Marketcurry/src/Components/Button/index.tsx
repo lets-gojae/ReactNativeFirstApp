@@ -1,14 +1,13 @@
 import React from 'react';
 import Styled from 'styled-components/native';
 
-import {Theme} from '~/styles/Theme';
 import {Mixin} from '~/styles/Mixin';
 
 interface Props {
   label: string;
   style?: Object;
-  fontWeight?: string;
-  color?: string | Object;
+  fontWeight?: any;
+  color?: string;
   disabled?: boolean;
   onPress?: () => void;
 }
@@ -37,11 +36,10 @@ const Button = ({
 export default Button;
 
 const StyleButton = Styled.TouchableOpacity`
-  ${Mixin.flexSet('center', 'center', 'null')}
-  /* width: 100%; */
-  height: 48px;
+  ${Mixin.flexSet('center', 'center', 'null')};
+  width: 100%;
+  height: 56px;
   border-radius: 4px;
-  border-bottom-width: 1px;
   border-color: #D3D3D3;
 
 `;

@@ -1,7 +1,9 @@
 import React, {createContext, useState, useEffect} from 'react';
 import {Platform} from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
 
+import AsyncStorage from '@react-native-community/async-storage';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {NaverLogin, getProfile} from '@react-native-seoul/naver-login';
 import {
   KakaoOAuthToken,
   KakaoProfile,
@@ -10,7 +12,7 @@ import {
   logout,
   unlink,
 } from '@react-native-seoul/kakao-login';
-import {NaverLogin, getProfile} from '@react-native-seoul/naver-login';
+import {NavigationContainer} from '@react-navigation/native';
 
 const iosKeys = {
   kConsumerKey: 'pRSRoF5DVRu_uorrb7Qr',
@@ -23,10 +25,12 @@ const initials = Platform.OS === 'ios' && iosKeys;
 
 const defaultContext: IUserContext = {
   isLoading: false,
+  loginToggle: false,
   initials: undefined,
   // userInfo: undefined,
   naverToken: undefined,
   kakaoToken: undefined,
+  getProfile: () => {},
   naverLogin: (props: any) => {},
   signInWidthKakao: () => {},
   logout: () => {},
@@ -34,21 +38,39 @@ const defaultContext: IUserContext = {
 
 const UserContext = createContext(defaultContext);
 
+type NavigationProp = StackNavigationProp<LoginNaviParamList, 'FindId'>;
 interface Props {
+  navigation?: NavigationProp;
   children: JSX.Element | Array<JSX.Element>;
 }
 
-const UserContextProvider = ({children}: Props) => {
+const UserContextProvider = ({children, navigation}: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [loginToggle, setLoginToggle] = useState<boolean>(false);
 
   const [kakaoToken, setKakaoToken] = useState<string>('');
   const signInWidthKakao = async (): Promise<void> => {
-    const token: KakaoOAuthToken = await login();
-    AsyncStorage.setItem('accessToken', token.accessToken).then(() => {
-      setKakaoToken(token.accessToken);
-    });
+    try {
+      const token = await login();
+      AsyncStorage.setItem('accessToken', token.accessToken).then(() => {
+        setKakaoToken(token.accessToken);
+      });
+      if (token) {
+        setLoginToggle(true);
+        setIsLoading(true);
+        console.log(token);
+        console.log(loginToggle);
+        navigation?.navigate('FindId');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-    setIsLoading(true);
+  const [getProfil, setGetProfil] = useState<string>('');
+  const getProfile = async (): Promise<void> => {
+    const profile: KakaoProfile = await getKakaoProfile();
+    setGetProfil(JSON.stringify(profile));
   };
 
   const [naverToken, setNaverToken] = useState<string>('');
@@ -79,14 +101,20 @@ const UserContextProvider = ({children}: Props) => {
     // setNaverToken('');
   };
 
+  // useEffect(() => {
+  //   console.log(KakaoOAuthToken);
+  // });
+
   return (
     <UserContext.Provider
       value={{
         isLoading,
+        loginToggle,
         kakaoToken,
         naverToken,
         initials,
         naverLogin,
+        getProfile,
         signInWidthKakao,
         logout,
       }}>

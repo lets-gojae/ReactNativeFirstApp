@@ -1,14 +1,38 @@
-import React from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import {Image} from 'react-native';
 import Styled from 'styled-components/native';
+
+import MainBanner from './MainBanner';
+import RecommendProduct from './RecommendProduct';
+
+import {UserContext} from '~/Context/MainProductData';
 
 import {Mixin} from '~/styles/Mixin';
 
 interface Props {}
 
 const HomeRecommend = ({}: Props) => {
-  return <ViewContainer></ViewContainer>;
+  // const [imageList, setImageList] = useState<Array<string>>([]);
+
+  const {imageList, productData} = useContext<IProductData>(UserContext);
+
+  return (
+    <ViewContainer>
+      <StyledScrollView bounces={false}>
+        <MainBanner imageList={imageList} />
+        <RecommendProduct title={'이 상품 어떄요?'} />
+      </StyledScrollView>
+    </ViewContainer>
+  );
 };
 
 export default HomeRecommend;
 
-const ViewContainer = Styled.View``;
+const ViewContainer = Styled.View`  
+  flex: 1;
+`;
+
+const StyledScrollView = Styled.ScrollView`
+  flex: 1;  
+  background-color: #f9f9f9;
+`;

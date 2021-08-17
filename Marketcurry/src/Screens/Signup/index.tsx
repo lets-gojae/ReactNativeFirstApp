@@ -16,7 +16,7 @@ const Signup = () => {
         <FormContainer>
           <InputText>아이디</InputText>
           <IdInput>
-            <Input style={{width: '70%'}} />
+            <Input placeholder="예: marketcurry12" style={{width: '70%'}} />
             <Button
               label="중복확인"
               style={{width: 100, height: 56, borderWidth: 2, marginLeft: 8}}
@@ -24,16 +24,16 @@ const Signup = () => {
             />
           </IdInput>
           <InputText>비밀번호</InputText>
-          <Input />
+          <Input placeholder="비밀번호를 입력해주세요" />
           <InputText>비밀번호 확인</InputText>
-          <Input />
+          <Input placeholder="비밀번호를 한번 더 입력해주세요" />
           <InputText>이름</InputText>
-          <Input />
+          <Input placeholder="이름을 입력해주세요" />
           <InputText>이메일</InputText>
-          <Input />
+          <Input placeholder="예: marketcurry@curry.com" />
           <InputText>휴대폰</InputText>
           <PhoneInput>
-            <Input style={{width: '64%'}} />
+            <Input placeholder="숫자만 입력해주세요" style={{width: '64%'}} />
             <Button
               label="인증번호 받기"
               style={{width: 120, height: 56, borderWidth: 2}}
@@ -41,9 +41,9 @@ const Signup = () => {
             />
           </PhoneInput>
           <InputText>주소</InputText>
-          <Input />
+          <Input placeholder="도로명, 지번, 건물명 검색" />
           <InputText>생년월일</InputText>
-          <Input />
+          <Input placeholder="YYYY    /   MM    /   DD" />
           <CheckBoxContainer>
             <InputText style={{marginBottom: 24}}>성별</InputText>
             <CheckBoxForm>
@@ -51,6 +51,7 @@ const Signup = () => {
                 <BouncyCheckbox
                   text="남자"
                   size={25}
+                  onPress={() => {}}
                   fillColor="#5f0180"
                   iconStyle={{borderColor: '#bfbfbf'}}
                   textStyle={{color: '#222222', textDecorationLine: 'none'}}
@@ -60,6 +61,7 @@ const Signup = () => {
                 <BouncyCheckbox
                   text="여자"
                   size={25}
+                  onPress={() => {}}
                   fillColor="#5f0180"
                   iconStyle={{borderColor: '#bfbfbf'}}
                   textStyle={{color: '#222222', textDecorationLine: 'none'}}
@@ -69,6 +71,7 @@ const Signup = () => {
                 <BouncyCheckbox
                   text="선택안함"
                   size={25}
+                  onPress={() => {}}
                   fillColor="#5f0180"
                   iconStyle={{borderColor: '#bfbfbf'}}
                   textStyle={{color: '#222222', textDecorationLine: 'none'}}
@@ -84,6 +87,7 @@ const Signup = () => {
                 <BouncyCheckbox
                   text="추천인 아이디"
                   size={25}
+                  onPress={() => {}}
                   fillColor="#5f0180"
                   iconStyle={{borderColor: '#bfbfbf'}}
                   textStyle={{color: '#222222', textDecorationLine: 'none'}}
@@ -93,6 +97,7 @@ const Signup = () => {
                 <BouncyCheckbox
                   text="참여 이벤트명"
                   size={25}
+                  onPress={() => {}}
                   fillColor="#5f0180"
                   iconStyle={{borderColor: '#bfbfbf'}}
                   textStyle={{color: '#222222', textDecorationLine: 'none'}}
@@ -108,6 +113,7 @@ const Signup = () => {
             <BouncyCheckbox
               text="전체 동의합니다."
               size={25}
+              onPress={() => {}}
               fillColor="#5f0180"
               iconStyle={{borderColor: '#bfbfbf'}}
               textStyle={{
@@ -126,6 +132,7 @@ const Signup = () => {
             <BouncyCheckbox
               text="이용약관 동의"
               size={25}
+              onPress={() => {}}
               fillColor="#5f0180"
               iconStyle={{borderColor: '#bfbfbf'}}
               textStyle={{
@@ -138,6 +145,7 @@ const Signup = () => {
             <BouncyCheckbox
               text="개인정보 수집 및 이용 동의"
               size={25}
+              onPress={() => {}}
               fillColor="#5f0180"
               iconStyle={{borderColor: '#bfbfbf'}}
               textStyle={{
@@ -150,6 +158,7 @@ const Signup = () => {
             <BouncyCheckbox
               text="개인정보 수집 및 이용 동의"
               size={25}
+              onPress={() => {}}
               fillColor="#5f0180"
               iconStyle={{borderColor: '#bfbfbf'}}
               textStyle={{
@@ -162,6 +171,7 @@ const Signup = () => {
             <BouncyCheckbox
               text="무료배송, 하일쿠폰 등 혜택/정보 수신 동의"
               size={25}
+              onPress={() => {}}
               fillColor="#5f0180"
               iconStyle={{borderColor: '#bfbfbf'}}
               textStyle={{

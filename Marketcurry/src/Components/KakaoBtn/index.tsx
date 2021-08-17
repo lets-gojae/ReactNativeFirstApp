@@ -19,12 +19,12 @@ const KakaoBtn = ({label, style, onPress}: Props) => {
 export default KakaoBtn;
 
 const StyledButton = Styled.TouchableOpacity`
-width: 100%;
-height: 40px;
-border-radius: 4px
-justify-content: center;
-align-items: center;
-background-color: #F7E600;
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  background-color: #F7E600;
 `;
 
 const Label = Styled.Text`

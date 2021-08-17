@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-// import {} from 'react-native';
 import Styled from 'styled-components/native';
 
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -18,7 +17,7 @@ interface Props {
 }
 
 const Login = ({navigation}: Props) => {
-  const {signInWidthKakao, naverLogin, initials} =
+  const {signInWidthKakao, naverLogin, initials, loginToggle} =
     useContext<IUserContext>(UserContext);
 
   return (
@@ -89,20 +88,20 @@ const FormContainer = Styled.View`
 `;
 
 const FindContainer = Styled.View`
-  ${Mixin.flexSet('space-between', 'center', 'row')}
+  ${Mixin.flexSet('center', 'center', 'row')}
+  padding: 0 120px 0 120px;
   margin-bottom: 32px;
-  padding: 0 96px 0 96px;
   color: #949494;
 `;
 
 const Line = Styled.Text`
-font-size: 16px;
+font-size: 20px;
 color: #D3D3D3;
 `;
 
 const SLContainer = Styled.View`
-  margin-top: 24px;
   ${Mixin.flexSet('center', 'center', 'null')}  
+  margin-top: 24px;
 `;
 
 const SocialLogin = Styled.Text`
