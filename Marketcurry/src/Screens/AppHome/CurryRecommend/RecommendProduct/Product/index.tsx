@@ -12,7 +12,7 @@ interface Props {
 const Product = ({id, name, image, price}: Props) => {
   return (
     <Container>
-      <Image style={{width: 200, height: 200}} source={{uri: image}} />
+      <Image style={{height: 240}} source={{uri: image}} />
       <Text>{name}</Text>
       <Text style={{fontWeight: 'bold'}}>
         {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원'}
@@ -24,7 +24,7 @@ const Product = ({id, name, image, price}: Props) => {
 export default Product;
 
 const Container = Styled.TouchableOpacity`
-  width: 200px;
+  width: 170px;
   height: 200px;
   margin-right: 8px;
 `;

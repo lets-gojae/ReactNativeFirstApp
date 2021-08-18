@@ -7,18 +7,17 @@ import {Mixin} from '~/styles/Mixin';
 import {Theme} from '~/styles/Theme';
 
 import Product from './Product';
-import MainBanner from '~/Screens/AppHome/CurryRecommend/MainBanner';
+
 interface Props {
   title: string;
 }
 
 const RecommendProduct = ({title}: Props) => {
-  const [productList, setProductList] = useState<Array<IProduct>>([]);
   const {getProduct, productData} = useContext<IProductData>(UserContext);
 
-  useEffect(() => {
-    console.log(productData);
-  });
+  // useEffect(() => {
+  //   console.log(productData);
+  // });
 
   return (
     <Container>
@@ -26,11 +25,12 @@ const RecommendProduct = ({title}: Props) => {
         <HeaderText>{title}</HeaderText>
       </Header>
       <FlatList
-        data={productData}
+        data={productData.filter(item => item.recommend === true)}
         keyExtractor={(item, index) => {
           return `recommendProduct-${index}`;
         }}
         horizontal={true}
+        showsHorizontalScrollIndicator={false}
         renderItem={({item, index}) => (
           <Product
             id={index}
@@ -48,14 +48,16 @@ export default RecommendProduct;
 
 const Container = Styled.SafeAreaView`
   width: 100%;
-  height: 350px;
+  height: 390px;
   margin-left: 16px;
+  margin-bottom: 100px;
 `;
 const Header = Styled.View`
   ${Mixin.flexSet('flex-end', 'flex-start', 'column')};
   width: 100%;
   height: 60px;
   margin-bottom: 16px;
+  
 `;
 
 const HeaderText = Styled.Text`

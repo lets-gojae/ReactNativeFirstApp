@@ -2,10 +2,12 @@ import React, {useState, useEffect, useContext} from 'react';
 import {Image} from 'react-native';
 import Styled from 'styled-components/native';
 
+import {UserContext} from '~/Context/MainProductData';
+
 import MainBanner from './MainBanner';
 import RecommendProduct from './RecommendProduct';
-
-import {UserContext} from '~/Context/MainProductData';
+import DailySpecial from './DailySpecial';
+import SpecialOffer from './SpecialOffer';
 
 import {Mixin} from '~/styles/Mixin';
 
@@ -21,6 +23,8 @@ const HomeRecommend = ({}: Props) => {
       <StyledScrollView bounces={false}>
         <MainBanner imageList={imageList} />
         <RecommendProduct title={'이 상품 어떄요?'} />
+        <DailySpecial />
+        <SpecialOffer />
       </StyledScrollView>
     </ViewContainer>
   );
