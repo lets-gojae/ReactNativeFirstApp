@@ -10,6 +10,6 @@ interface IProduct {
   image: string;
   price: number;
   recommend: boolean;
-  goodprice: boolean;
-  mdrecommend: boolean;
+  specialOffer: boolean;
+  mdRecommend: boolean;
 }
