@@ -31,6 +31,8 @@ const CheapPrice = ({title}: Props) => {
               name={item.name}
               image={item.image}
               price={item.price}
+              discount={item.discount}
+              discountPrice={item.discountPrice}
             />
           )}
         />

@@ -8,6 +8,7 @@ import RecommendProduct from './RecommendProduct';
 import DailySpecial from './DailySpecial';
 import SpecialOffer from './SpecialOffer';
 import CheapPrice from './CheapPrice';
+import MdRecommend from './MdRecommend';
 
 interface Props {}
 
@@ -22,6 +23,7 @@ const HomeRecommend = ({}: Props) => {
         <DailySpecial title={'일일특가'} />
         <SpecialOffer title={'특가/혜택'} />
         <CheapPrice title={'놓치면 후회할 가격'} />
+        <MdRecommend title={'MD의 추천'} />
       </StyledScrollView>
     </Container>
   );
