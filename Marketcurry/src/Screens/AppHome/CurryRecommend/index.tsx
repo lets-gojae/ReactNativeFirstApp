@@ -1,5 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
-import {Image} from 'react-native';
+import React, {useContext} from 'react';
 import Styled from 'styled-components/native';
 
 import {UserContext} from '~/Context/MainProductData';
@@ -8,31 +7,31 @@ import MainBanner from './MainBanner';
 import RecommendProduct from './RecommendProduct';
 import DailySpecial from './DailySpecial';
 import SpecialOffer from './SpecialOffer';
-
-import {Mixin} from '~/styles/Mixin';
+import CheapPrice from './CheapPrice';
+import MdRecommend from './MdRecommend';
 
 interface Props {}
 
 const HomeRecommend = ({}: Props) => {
-  // const [imageList, setImageList] = useState<Array<string>>([]);
-
   const {imageList, productData} = useContext<IProductData>(UserContext);
 
   return (
-    <ViewContainer>
+    <Container>
       <StyledScrollView bounces={false}>
         <MainBanner imageList={imageList} />
         <RecommendProduct title={'이 상품 어떄요?'} />
-        <DailySpecial />
-        <SpecialOffer />
+        <DailySpecial title={'일일특가'} />
+        <SpecialOffer title={'특가/혜택'} />
+        <CheapPrice title={'놓치면 후회할 가격'} />
+        <MdRecommend title={'MD의 추천'} />
       </StyledScrollView>
-    </ViewContainer>
+    </Container>
   );
 };
 
 export default HomeRecommend;
 
-const ViewContainer = Styled.View`  
+const Container = Styled.View`  
   flex: 1;
 `;
 

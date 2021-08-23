@@ -11,7 +11,7 @@ interface Props {
 
 const Product = ({id, name, image, price}: Props) => {
   return (
-    <Container>
+    <Container key={id}>
       <Image style={{height: 240}} source={{uri: image}} />
       <Text>{name}</Text>
       <Text style={{fontWeight: 'bold'}}>

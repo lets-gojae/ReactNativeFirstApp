@@ -7,9 +7,13 @@ interface IProductData {
 interface IProduct {
   id: number;
   name: string;
+  description: string;
   image: string;
   price: number;
+  discount: number;
+  discountPrice: number;
   recommend: boolean;
   specialOffer: boolean;
+  cheapPrice: boolean;
   mdRecommend: boolean;
 }

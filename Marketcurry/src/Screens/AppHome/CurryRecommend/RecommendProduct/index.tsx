@@ -46,7 +46,7 @@ const RecommendProduct = ({title}: Props) => {
 
 export default RecommendProduct;
 
-const Container = Styled.SafeAreaView`
+const Container = Styled.View`
   width: 100%;
   height: 390px;
   margin-left: 16px;

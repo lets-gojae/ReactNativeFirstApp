@@ -5,9 +5,11 @@ import moment from 'moment';
 import {Theme} from '~/styles/Theme';
 import {Mixin} from '~/styles/Mixin';
 
-interface Props {}
+interface Props {
+  title: string;
+}
 
-const DailySpecial = ({}: Props) => {
+const DailySpecial = ({title}: Props) => {
   const [hours, setHours] = useState<number>(0);
   const [mins, setMins] = useState<number>(0);
   const [secs, setSecs] = useState<number>(0);
@@ -35,7 +37,7 @@ const DailySpecial = ({}: Props) => {
   return (
     <Container>
       <Text style={{fontWeight: 'bold', fontSize: 20, marginBottom: 8}}>
-        일일특가
+        {title}
       </Text>
       <Text style={{color: '#949494'}}>24시간 한정 특가</Text>
       <CountBackground />
@@ -67,7 +69,7 @@ const DailySpecial = ({}: Props) => {
 
 export default DailySpecial;
 
-const Container = Styled.SafeAreaView`
+const Container = Styled.View`
   flex: 1;
   margin: 0 16px 48px 16px;
 `;
