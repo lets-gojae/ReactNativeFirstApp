@@ -3,9 +3,8 @@ import {FlatList} from 'react-native';
 import Styled from 'styled-components/native';
 
 import {UserContext} from '~/Context/MainProductData';
-import {Mixin} from '~/styles/Mixin';
 
-import Product from './Product';
+import Products from '~/Components/Products';
 
 interface Props {
   title: string;
@@ -26,7 +25,11 @@ const CheapPrice = ({title}: Props) => {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           renderItem={({item, index}) => (
-            <Product
+            <Products
+              width={180}
+              height={220}
+              marginRight={8}
+              nameFont={16}
               id={index}
               name={item.name}
               image={item.image}

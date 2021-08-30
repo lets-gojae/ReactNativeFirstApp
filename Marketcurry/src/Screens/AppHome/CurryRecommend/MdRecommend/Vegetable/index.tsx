@@ -1,14 +1,36 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Styled from 'styled-components/native';
 
+import {UserContext} from '~/Context/MainProductData';
+
 import {Theme} from '~/styles/Theme';
+import {Mixin} from '~/styles/Mixin';
+
+import Products from '~/Components/Products';
 
 interface Props {}
 
 const Vegetable = ({}: Props) => {
+  const {productData} = useContext<IProductData>(UserContext);
+
   return (
     <Container>
-      <Text>12dwadawfesnasiufgbasiefubsifubsfeui3</Text>
+      {productData
+        .filter(item => item.mdRecommend === true)
+        .filter(item => item.category === 1)
+        .map((item, index) => (
+          <Products
+            width={120}
+            height={160}
+            nameFont={16}
+            id={index}
+            name={item.name}
+            image={item.image}
+            price={item.price}
+            discount={item.discount}
+            discountPrice={item.discountPrice}
+          />
+        ))}
     </Container>
   );
 };
@@ -16,8 +38,8 @@ const Vegetable = ({}: Props) => {
 export default Vegetable;
 
 const Container = Styled.View`
-  background-color: ${Theme.colors.backColor}
-  height: 200px;
+  ${Mixin.flexSet('space-between', 'flex-start', 'row')};
+  flex: 1;
+  flex-wrap: wrap;
+  background-color: ${Theme.colors.backColor};
 `;
-
-const Text = Styled.Text``;

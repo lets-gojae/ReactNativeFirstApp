@@ -23,7 +23,10 @@ const HomeRecommend = ({}: Props) => {
         <DailySpecial title={'일일특가'} />
         <SpecialOffer title={'특가/혜택'} />
         <CheapPrice title={'놓치면 후회할 가격'} />
-        <MdRecommend title={'MD의 추천'} />
+        <MdRecommendWrap>
+          <MdrecommendText>MD의 추천</MdrecommendText>
+          <MdRecommend />
+        </MdRecommendWrap>
       </StyledScrollView>
     </Container>
   );
@@ -38,4 +41,15 @@ const Container = Styled.View`
 const StyledScrollView = Styled.ScrollView`
   flex: 1;  
   background-color: #f9f9f9;
+`;
+
+const MdRecommendWrap = Styled.View`
+  margin: 0 16px 0 16px;
+`;
+
+const MdrecommendText = Styled.Text`
+  /* margin-left: 16px; */
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: bold;
 `;

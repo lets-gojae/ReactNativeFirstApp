@@ -6,6 +6,7 @@ interface IProductData {
 
 interface IProduct {
   id: number;
+  category: number;
   name: string;
   description: string;
   image: string;
