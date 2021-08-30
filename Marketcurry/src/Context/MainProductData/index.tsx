@@ -29,14 +29,13 @@ const ProductImagesProvider = ({children}: Props) => {
 
   const getProduct = async () => {
     const response = await fetch(
-      'https://gist.githubusercontent.com/lets-gojae/af16df23efd4c723d209326a4f21194f/raw/1367670192f34e861b58016cbe0c97fc3d2b769e/product.json',
+      'https://gist.githubusercontent.com/lets-gojae/af16df23efd4c723d209326a4f21194f/raw/2547bc1be4cb33e8b51997c41cc9b162b5363ea1/product.json',
     );
     const data = await response.json();
     setProductData(data);
   };
 
   useEffect(() => {
-    console.log(productData);
     getProduct();
     getMainBanner();
   }, []);

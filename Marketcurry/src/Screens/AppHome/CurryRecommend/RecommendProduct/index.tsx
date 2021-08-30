@@ -13,11 +13,7 @@ interface Props {
 }
 
 const RecommendProduct = ({title}: Props) => {
-  const {getProduct, productData} = useContext<IProductData>(UserContext);
-
-  // useEffect(() => {
-  //   console.log(productData);
-  // });
+  const {productData} = useContext<IProductData>(UserContext);
 
   return (
     <Container>
