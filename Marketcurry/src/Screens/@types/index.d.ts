@@ -10,3 +10,7 @@ type LoginNaviParamList = {
   OrderInquiry: undefined;
   NotiSettings: undefined;
 };
+
+type ProductDetailNaviParamList = {
+  ProductDetail: undefined;
+};

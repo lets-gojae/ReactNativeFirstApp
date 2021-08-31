@@ -16,6 +16,7 @@ interface Props {
   marginRight?: number;
   nameFont?: number;
   PriceFont?: number;
+  DiscountFont?: number;
   DCPrice?: number;
 }
 
@@ -31,6 +32,7 @@ const Products = ({
   marginRight,
   nameFont,
   PriceFont,
+  DiscountFont,
   DCPrice,
 }: Props) => {
   return (
@@ -40,7 +42,7 @@ const Products = ({
         {name}
       </Name>
       <TextWrap>
-        <Discount>{discount}% </Discount>
+        <Discount style={{fontSize: DiscountFont}}>{discount}% </Discount>
         <Price style={{fontSize: PriceFont}}>
           {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원'}
         </Price>

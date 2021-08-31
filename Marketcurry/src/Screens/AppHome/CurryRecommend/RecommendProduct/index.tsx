@@ -8,11 +8,16 @@ import {Theme} from '~/styles/Theme';
 
 import Product from './Product';
 
+import {StackNavigationProp} from '@react-navigation/stack';
+
+import Button from '~/Components/Button';
+
 interface Props {
   title: string;
+  onPress?: () => void;
 }
 
-const RecommendProduct = ({title}: Props) => {
+const RecommendProduct = ({title, onPress}: Props) => {
   const {productData} = useContext<IProductData>(UserContext);
 
   return (
@@ -20,22 +25,25 @@ const RecommendProduct = ({title}: Props) => {
       <Header>
         <HeaderText>{title}</HeaderText>
       </Header>
-      <FlatList
-        data={productData.filter(item => item.recommend === true)}
-        keyExtractor={(item, index) => {
-          return `recommendProduct-${index}`;
-        }}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        renderItem={({item, index}) => (
-          <Product
-            id={index}
-            name={item.name}
-            image={item.image}
-            price={item.price}
-          />
-        )}
-      />
+      <ProductWrap>
+        <FlatList
+          data={productData.filter(item => item.recommend === true)}
+          keyExtractor={(item, index) => {
+            return `recommendProduct-${index}`;
+          }}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({item, index}) => (
+            <Product
+              onPress={onPress}
+              id={index}
+              name={item.name}
+              image={item.image}
+              price={item.price}
+            />
+          )}
+        />
+      </ProductWrap>
     </Container>
   );
 };
@@ -46,7 +54,7 @@ const Container = Styled.View`
   width: 100%;
   height: 390px;
   margin-left: 16px;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 `;
 const Header = Styled.View`
   ${Mixin.flexSet('flex-end', 'flex-start', 'column')};
@@ -60,4 +68,8 @@ const HeaderText = Styled.Text`
   font-size: 20px;
   font-weight: bold;
   color: ${Theme.fontColors.headerColor};
+`;
+
+const ProductWrap = Styled.TouchableOpacity`
+  flex: 1;
 `;

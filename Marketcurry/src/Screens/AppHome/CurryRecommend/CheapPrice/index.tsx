@@ -28,8 +28,11 @@ const CheapPrice = ({title}: Props) => {
             <Products
               width={180}
               height={220}
+              nameFont={18}
+              PriceFont={18}
+              DiscountFont={18}
+              DCPrice={18}
               marginRight={8}
-              nameFont={16}
               id={index}
               name={item.name}
               image={item.image}
