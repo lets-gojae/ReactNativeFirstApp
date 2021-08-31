@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState, useRef} from 'react';
 import Styled from 'styled-components/native';
 
 import {UserContext} from '~/Context/MainProductData';
@@ -10,16 +10,29 @@ import SpecialOffer from './SpecialOffer';
 import CheapPrice from './CheapPrice';
 import MdRecommend from './MdRecommend';
 
-interface Props {}
+import {StackNavigationProp} from '@react-navigation/stack';
 
-const HomeRecommend = ({}: Props) => {
-  const {imageList, productData} = useContext<IProductData>(UserContext);
+type NavigationProp = StackNavigationProp<
+  ProductDetailNaviParamList,
+  'ProductDetail'
+>;
+interface Props {
+  navigation: NavigationProp;
+}
+
+const HomeRecommend = ({navigation}: Props) => {
+  const {imageList, getProduct} = useContext<IProductData>(UserContext);
 
   return (
     <Container>
-      <StyledScrollView bounces={false}>
+      <StyledScrollView bounces={false} showsVerticalScrollIndicator={false}>
         <MainBanner imageList={imageList} />
-        <RecommendProduct title={'이 상품 어떄요?'} />
+        <RecommendProduct
+          title={'이 상품 어떄요?'}
+          onPress={() => {
+            navigation.navigate('ProductDetail');
+          }}
+        />
         <DailySpecial title={'일일특가'} />
         <SpecialOffer title={'특가/혜택'} />
         <CheapPrice title={'놓치면 후회할 가격'} />

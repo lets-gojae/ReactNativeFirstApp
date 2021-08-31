@@ -1,5 +1,6 @@
 interface IProductData {
   getProduct: () => void;
+  // goToProductDetail: () => void;
   imageList: Array<string>;
   productData: Array<IProduct>;
 }

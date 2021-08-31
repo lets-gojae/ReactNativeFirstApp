@@ -7,15 +7,21 @@ const defaultContext: IProductData = {
   imageList: [],
   productData: [],
   getProduct: () => {},
+  goToProductDetail: () => {},
 };
 
 const UserContext = createContext(defaultContext);
 
+type NavigationProp = StackNavigationProp<
+  ProductDetailNaviParamList,
+  'ProductDetail'
+>;
 interface Props {
+  navigation: NavigationProp;
   children: JSX.Element | Array<JSX.Element>;
 }
 
-const ProductImagesProvider = ({children}: Props) => {
+const ProductImagesProvider = ({children, navigation}: Props) => {
   const [imageList, setImageList] = useState<Array<string>>([]);
   const [productData, setProductData] = useState<Array<IProduct>>([]);
 
@@ -35,13 +41,18 @@ const ProductImagesProvider = ({children}: Props) => {
     setProductData(data);
   };
 
+  const goToProductDetail = () => {
+    navigation.navigate('ProductDetail');
+  };
+
   useEffect(() => {
     getProduct();
     getMainBanner();
   }, []);
 
   return (
-    <UserContext.Provider value={{imageList, productData, getProduct}}>
+    <UserContext.Provider
+      value={{imageList, productData, getProduct, goToProductDetail}}>
       {children}
     </UserContext.Provider>
   );

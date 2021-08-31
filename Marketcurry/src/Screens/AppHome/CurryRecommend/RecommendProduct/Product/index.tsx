@@ -1,17 +1,24 @@
-import React, {useEffect} from 'react';
-import {Image, Dimensions} from 'react-native';
+import React, {useContext} from 'react';
+import {Image} from 'react-native';
+
+import {StackNavigationProp} from '@react-navigation/stack';
+import {UserContext} from '~/Context/MainProductData';
+
 import Styled from 'styled-components/native';
 
 interface Props {
+  onPress?: () => void;
   id: number;
   name: string;
   image: string;
   price: number;
 }
 
-const Product = ({id, name, image, price}: Props) => {
+const Product = ({id, name, image, price, onPress}: Props) => {
+  // const {goToProductDetail} = useContext<IProductData>(UserContext);
+
   return (
-    <Container key={id}>
+    <Container key={id} onPress={onPress}>
       <Image style={{height: 240}} source={{uri: image}} />
       <Text>{name}</Text>
       <Text style={{fontWeight: 'bold'}}>

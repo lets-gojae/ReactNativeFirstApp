@@ -9,6 +9,7 @@ import NewProduct from '~/Screens/AppHome/NewProduct';
 import BestProduct from '~/Screens/AppHome/BestProduct';
 import ThriftyShopping from '~/Screens/AppHome/ThriftyShopping';
 import Event from '~/Screens/AppHome/Event';
+import ProductDetail from '~/Components/ProductDetail';
 
 import {Theme} from '~/styles/Theme';
 
@@ -65,6 +66,7 @@ export default function HomeTab() {
           ),
         }}
       />
+      <Stack.Screen name="ProductDetail" component={ProductDetail} />
     </Stack.Navigator>
   );
 }
