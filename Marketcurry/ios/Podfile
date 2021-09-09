@@ -14,6 +14,7 @@ target 'Marketcurry' do
 
   target 'MarketcurryTests' do
     inherit! :complete
+    pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
     # Pods for testing
   end
 
