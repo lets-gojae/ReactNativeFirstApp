@@ -6,24 +6,22 @@ import {StackNavigationProp} from '@react-navigation/stack';
 const defaultContext: IProductData = {
   imageList: [],
   productData: [],
+  descriptionData: [],
   getProduct: () => {},
-  goToProductDetail: () => {},
 };
 
 const UserContext = createContext(defaultContext);
 
-type NavigationProp = StackNavigationProp<
-  ProductDetailNaviParamList,
-  'ProductDetail'
->;
 interface Props {
-  navigation: NavigationProp;
   children: JSX.Element | Array<JSX.Element>;
 }
 
-const ProductImagesProvider = ({children, navigation}: Props) => {
+const ProductImagesProvider = ({children}: Props) => {
   const [imageList, setImageList] = useState<Array<string>>([]);
   const [productData, setProductData] = useState<Array<IProduct>>([]);
+  const [descriptionData, setDescriptionData] = useState<Array<IDescription>>(
+    [],
+  );
 
   const getMainBanner = async () => {
     const response = await fetch(
@@ -35,24 +33,34 @@ const ProductImagesProvider = ({children, navigation}: Props) => {
 
   const getProduct = async () => {
     const response = await fetch(
-      'https://gist.githubusercontent.com/lets-gojae/af16df23efd4c723d209326a4f21194f/raw/2547bc1be4cb33e8b51997c41cc9b162b5363ea1/product.json',
+      'https://gist.githubusercontent.com/lets-gojae/af16df23efd4c723d209326a4f21194f/raw/a374ebf079917dea4a6c3ff117e2e4ad95146205/product.json',
     );
     const data = await response.json();
     setProductData(data);
   };
 
-  const goToProductDetail = () => {
-    navigation.navigate('ProductDetail');
+  const getItemDescription = async () => {
+    const response = await fetch(
+      'https://gist.githubusercontent.com/lets-gojae/e12c7d524c53e331cd8a77bebb08eabd/raw/fa2928709b92008f7ff27f77d415378c5f4d332a/itemDescription.json',
+    );
+    const data = await response.json();
+    setDescriptionData(data);
   };
 
   useEffect(() => {
+    getItemDescription();
     getProduct();
     getMainBanner();
   }, []);
 
   return (
     <UserContext.Provider
-      value={{imageList, productData, getProduct, goToProductDetail}}>
+      value={{
+        imageList,
+        productData,
+        descriptionData,
+        getProduct,
+      }}>
       {children}
     </UserContext.Provider>
   );
