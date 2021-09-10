@@ -12,5 +12,5 @@ type LoginNaviParamList = {
 };
 
 type ProductDetailNaviParamList = {
-  ProductDetail: undefined;
+  ProductDetail?: IProduct | IDetailItem;
 };

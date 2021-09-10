@@ -11,14 +11,17 @@ import ThriftyShopping from '~/Screens/AppHome/ThriftyShopping';
 import Event from '~/Screens/AppHome/Event';
 import ProductDetail from '~/Components/ProductDetail';
 
+// import ProductDetailTab from '~/Navigation/ProductDetailTap';
+
 import {Theme} from '~/styles/Theme';
 
 const Stack = createStackNavigator();
-const MainTabStack = createMaterialTopTabNavigator();
+const MainTopTab = createMaterialTopTabNavigator();
+const DetailTopTap = createMaterialTopTabNavigator();
 
 const HomeTabNavi = () => {
   return (
-    <MainTabStack.Navigator
+    <MainTopTab.Navigator
       tabBarOptions={{
         activeTintColor: Theme.colors.mainColor,
         inactiveTintColor: Theme.colors.grayColor,
@@ -28,16 +31,21 @@ const HomeTabNavi = () => {
           borderBottomColor: Theme.colors.mainColor,
         },
         labelStyle: {
-          fontSize: 13,
+          fontSize: 14,
           fontWeight: '600',
         },
+        style: {
+          marginLeft: 8,
+          marginRight: 8,
+          backgroundColor: `${Theme.colors.backColor}`,
+        },
       }}>
-      <MainTabStack.Screen name="컬리추천" component={HomeRecommend} />
-      <MainTabStack.Screen name="신상품" component={NewProduct} />
-      <MainTabStack.Screen name="베스트" component={BestProduct} />
-      <MainTabStack.Screen name="알뜰쇼핑" component={ThriftyShopping} />
-      <MainTabStack.Screen name="이벤트" component={Event} />
-    </MainTabStack.Navigator>
+      <MainTopTab.Screen name="컬리추천" component={HomeRecommend} />
+      <MainTopTab.Screen name="신상품" component={NewProduct} />
+      <MainTopTab.Screen name="베스트" component={BestProduct} />
+      <MainTopTab.Screen name="알뜰쇼핑" component={ThriftyShopping} />
+      <MainTopTab.Screen name="이벤트" component={Event} />
+    </MainTopTab.Navigator>
   );
 };
 
@@ -66,7 +74,11 @@ export default function HomeTab() {
           ),
         }}
       />
-      <Stack.Screen name="ProductDetail" component={ProductDetail} />
+      <Stack.Screen
+        name="ProductDetail"
+        component={ProductDetail}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 }

@@ -3,6 +3,7 @@ import {Image} from 'react-native';
 
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 
 import {Theme} from '~/styles/Theme';
 import HomeTab from '~/Navigation/TopTabNavi';
@@ -84,6 +85,13 @@ const MyCurryTab = () => {
 };
 
 export default function BottomNavigator() {
+  const setTabBarVisible = (route: any) => {
+    const routeName: any = getFocusedRouteNameFromRoute(route);
+    const hideOnScreens = ['ProductDetail'];
+    if (hideOnScreens.indexOf(routeName) > -1) return false;
+    return true;
+  };
+
   return (
     <BottomTab.Navigator
       tabBarOptions={{
@@ -92,7 +100,8 @@ export default function BottomNavigator() {
       <BottomTab.Screen
         name="홈"
         component={HomeTab}
-        options={{
+        options={({route}) => ({
+          tabBarVisible: setTabBarVisible(route),
           tabBarIcon: ({color, focused}) => (
             <Image
               style={{tintColor: `${Theme.colors.mainColor}`}}
@@ -103,8 +112,9 @@ export default function BottomNavigator() {
               }
             />
           ),
-        }}
+        })}
       />
+
       <BottomTab.Screen
         name="추천"
         component={RecommendTab}

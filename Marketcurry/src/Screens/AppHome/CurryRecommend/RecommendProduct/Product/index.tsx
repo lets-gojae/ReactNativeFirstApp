@@ -6,8 +6,14 @@ import {UserContext} from '~/Context/MainProductData';
 
 import Styled from 'styled-components/native';
 
+// type NavigationProp = StackNavigationProp<
+//   ProductDetailNaviParamList,
+//   'ProductDetail'
+// >;
+
 interface Props {
-  onPress?: () => void;
+  onPress: () => void;
+  // navigation?: NavigationProp;
   id: number;
   name: string;
   image: string;
@@ -15,7 +21,9 @@ interface Props {
 }
 
 const Product = ({id, name, image, price, onPress}: Props) => {
-  // const {goToProductDetail} = useContext<IProductData>(UserContext);
+  // const goToDetail = () => {
+  //   navigation?.navigate('ProductDetail', {id, name, image, price});
+  // };
 
   return (
     <Container key={id} onPress={onPress}>
