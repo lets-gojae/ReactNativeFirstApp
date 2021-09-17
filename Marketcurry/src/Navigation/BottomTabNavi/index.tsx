@@ -6,7 +6,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 
 import {Theme} from '~/styles/Theme';
-import HomeTab from '~/Navigation/TopTabNavi';
+import TopTabNavi from '~/Navigation/TopTabNavi';
 
 import Recommend from '~/Screens/BottomTab/Recommend';
 import Category from '~/Screens/BottomTab/Category';
@@ -87,7 +87,7 @@ const MyCurryTab = () => {
 export default function BottomNavigator() {
   const setTabBarVisible = (route: any) => {
     const routeName: any = getFocusedRouteNameFromRoute(route);
-    const hideOnScreens = ['ProductDetail'];
+    const hideOnScreens = ['ProductDetail', 'ProductReview'];
     if (hideOnScreens.indexOf(routeName) > -1) return false;
     return true;
   };
@@ -99,7 +99,7 @@ export default function BottomNavigator() {
       }}>
       <BottomTab.Screen
         name="홈"
-        component={HomeTab}
+        component={TopTabNavi}
         options={({route}) => ({
           tabBarVisible: setTabBarVisible(route),
           tabBarIcon: ({color, focused}) => (

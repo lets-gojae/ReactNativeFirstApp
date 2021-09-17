@@ -1,7 +1,4 @@
-import React, {createContext, useState, useEffect} from 'react';
-
-import AsyncStorage from '@react-native-community/async-storage';
-import {StackNavigationProp} from '@react-navigation/stack';
+import React, {useState, useEffect, createContext} from 'react';
 
 const defaultContext: IProductData = {
   imageList: [],
@@ -9,7 +6,6 @@ const defaultContext: IProductData = {
   descriptionData: [],
   getProduct: () => {},
 };
-
 const UserContext = createContext(defaultContext);
 
 interface Props {
@@ -52,6 +48,8 @@ const ProductImagesProvider = ({children}: Props) => {
     getProduct();
     getMainBanner();
   }, []);
+
+  //Review state
 
   return (
     <UserContext.Provider

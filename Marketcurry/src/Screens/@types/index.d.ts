@@ -13,4 +13,5 @@ type LoginNaviParamList = {
 
 type ProductDetailNaviParamList = {
   ProductDetail?: IProduct | IDetailItem;
+  ProductReview?: IProduct | IDetailItem;
 };
