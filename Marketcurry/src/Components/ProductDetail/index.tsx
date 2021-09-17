@@ -11,6 +11,7 @@ import ProductDescription from './ProductDescription';
 import ProductReview from './ProductReview';
 import ProductInquire from './ProductInquire';
 import Button from '~/Components/Button';
+
 import {Mixin} from '~/styles/Mixin';
 import {Theme} from '~/styles/Theme';
 
@@ -61,7 +62,9 @@ const ProductDetail = ({navigation, route}: Props) => {
         <DetailTopTap.Screen name="상세정보">
           {props => <ProductDescription {...props} item={item} />}
         </DetailTopTap.Screen>
-        <DetailTopTap.Screen name="구매후기" component={ProductReview} />
+        <DetailTopTap.Screen name="구매후기">
+          {props => <ProductReview {...props} item={item} />}
+        </DetailTopTap.Screen>
         <DetailTopTap.Screen name="상품문의" component={ProductInquire} />
       </DetailTopTap.Navigator>
       <Footer>

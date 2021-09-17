@@ -10,7 +10,7 @@ import BestProduct from '~/Screens/AppHome/BestProduct';
 import ThriftyShopping from '~/Screens/AppHome/ThriftyShopping';
 import Event from '~/Screens/AppHome/Event';
 import ProductDetail from '~/Components/ProductDetail';
-
+import Review from '~/Components/Review';
 // import ProductDetailTab from '~/Navigation/ProductDetailTap';
 
 import {Theme} from '~/styles/Theme';
@@ -49,7 +49,7 @@ const HomeTabNavi = () => {
   );
 };
 
-export default function HomeTab() {
+export default function TopTa() {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -77,6 +77,11 @@ export default function HomeTab() {
       <Stack.Screen
         name="ProductDetail"
         component={ProductDetail}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProductReview"
+        component={Review}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

@@ -26,6 +26,7 @@ const CheapPrice = ({title}: Props) => {
           showsHorizontalScrollIndicator={false}
           renderItem={({item, index}) => (
             <Products
+              key={index}
               width={180}
               height={220}
               nameFont={18}
@@ -33,7 +34,6 @@ const CheapPrice = ({title}: Props) => {
               DiscountFont={18}
               DCPrice={18}
               marginRight={8}
-              id={index}
               name={item.name}
               image={item.image}
               price={item.price}

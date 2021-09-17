@@ -20,10 +20,10 @@ const Vegetable = ({}: Props) => {
         .filter(item => item.category === 1)
         .map((item, index) => (
           <Products
+            key={index}
             width={120}
             height={160}
             nameFont={16}
-            id={index}
             name={item.name}
             image={item.image}
             price={item.price}

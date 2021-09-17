@@ -5,7 +5,6 @@ import Styled from 'styled-components/native';
 import {Mixin} from '~/styles/Mixin';
 
 interface Props {
-  id: number;
   name: string;
   image: string;
   price: number;
@@ -21,7 +20,6 @@ interface Props {
 }
 
 const Products = ({
-  id,
   name,
   image,
   price,
@@ -36,7 +34,7 @@ const Products = ({
   DCPrice,
 }: Props) => {
   return (
-    <Container style={{width: width, marginRight: marginRight}} key={id}>
+    <Container style={{width: width, marginRight: marginRight}}>
       <Image style={{height: height}} source={{uri: image}} />
       <Name style={{fontSize: nameFont}} numberOfLines={2}>
         {name}
