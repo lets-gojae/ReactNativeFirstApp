@@ -65,7 +65,9 @@ const ProductDetail = ({navigation, route}: Props) => {
         <DetailTopTap.Screen name="구매후기">
           {props => <ProductReview {...props} item={item} />}
         </DetailTopTap.Screen>
-        <DetailTopTap.Screen name="상품문의" component={ProductInquire} />
+        <DetailTopTap.Screen name="상품문의">
+          {props => <ProductInquire {...props} item={item} />}
+        </DetailTopTap.Screen>
       </DetailTopTap.Navigator>
       <Footer>
         <Heart onPress={() => setBtnToggle(!btnToggle)}>

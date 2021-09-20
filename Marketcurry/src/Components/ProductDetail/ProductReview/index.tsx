@@ -2,11 +2,13 @@ import React from 'react';
 import Styled from 'styled-components/native';
 
 import {StackNavigationProp} from '@react-navigation/stack';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 import {useStateContext} from '~/Context/ReviewContext';
 
 import Button from '~/Components/Button';
 import {Theme} from '~/styles/Theme';
+import {Mixin} from '~/styles/Mixin';
 
 type NavigationProp = StackNavigationProp<
   ProductDetailNaviParamList,
@@ -15,7 +17,7 @@ type NavigationProp = StackNavigationProp<
 
 interface Props {
   navigation: NavigationProp;
-  item: any;
+  item: IProduct;
 }
 
 const ProductReview = ({navigation, item}: Props) => {
@@ -39,7 +41,10 @@ const ProductReview = ({navigation, item}: Props) => {
             <ReviewContainer
               onPress={() => navigation.navigate('ReviewDetail', {i, item})}
               key={index}>
-              <Title>{i.title}</Title>
+              <TitleWrap>
+                <Title>{i.title}</Title>
+                {i.image.length > 0 ? <Entypo name="image" size={20} /> : null}
+              </TitleWrap>
               <Writer>{i.writer}</Writer>
               <Date>{i.date}</Date>
             </ReviewContainer>
@@ -72,6 +77,10 @@ const ReviewContainer = Styled.TouchableOpacity`
   margin-bottom: 16px;
   border-bottom-width: 1px;
   border-color: #cfcfcf;
+`;
+
+const TitleWrap = Styled.View`
+  ${Mixin.flexSet('space-between', 'null', 'row')};
 `;
 
 const Title = Styled.Text`
