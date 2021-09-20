@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {Alert} from 'react-native';
 import Styled from 'styled-components/native';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import ImagePicker from 'react-native-image-crop-picker';
 import {StackNavigationProp} from '@react-navigation/stack';
 
-import {useStateContext, useDispatchContext} from '~/Context/ReviewContext';
+import {useDispatchContext} from '~/Context/ReviewContext';
 import {Mixin} from '~/styles/Mixin';
 import {Theme} from '~/styles/Theme';
 
@@ -19,32 +18,24 @@ interface Props {
   route: any;
 }
 
-const ProductReview = ({navigation, route}: Props) => {
+const Review = ({navigation, route}: Props) => {
   const [title, setTitle] = useState<string>('');
   const [bodyText, setBodyText] = useState<string>('');
+  const [date, setDate] = useState<string>('');
   const [images, setImages] = useState<Array<string>>([]);
-  const [ifDisabled, setIfDisabled] = useState<boolean>(true);
   const {item} = route.params;
 
   const dispatch = useDispatchContext();
-  const state = useStateContext();
   const setReview = () => {
     const reviewList = {
       title: title,
       bodyText: bodyText,
       image: images,
+      writer: '고재원',
+      date: date,
     };
     dispatch({type: 'SET_REVIEW', payload: [reviewList]});
   };
-
-  // const reviewList = {
-  //   title: title,
-  //   bodyText: bodyText,
-  // };
-
-  // useEffect(() => {
-  //   dispatch({type: 'SET_REVIEW', payload: [reviewList]});
-  // }, []);
 
   const showCameraRoll = () => {
     ImagePicker.openPicker({
@@ -54,6 +45,14 @@ const ProductReview = ({navigation, route}: Props) => {
       setImages(images.map(i => i.path));
     });
   };
+
+  let today = new Date();
+  let year = today.getFullYear().toString();
+  let month = today.getMonth() + 1;
+  let day = today.getDate().toString();
+  useEffect(() => {
+    setDate(year + ' ' + month + ' ' + day + ' ');
+  });
 
   return (
     <Container>
@@ -113,7 +112,7 @@ const ProductReview = ({navigation, route}: Props) => {
   );
 };
 
-export default ProductReview;
+export default Review;
 
 const Container = Styled.SafeAreaView`
   flex: 1;

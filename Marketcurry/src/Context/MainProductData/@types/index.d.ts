@@ -6,7 +6,7 @@ interface IProductData {
 }
 
 interface IDetailItem {
-  item: any;
+  item: IProduct;
 }
 
 interface IProduct extends IDetailItem {

@@ -11,7 +11,7 @@ import ThriftyShopping from '~/Screens/AppHome/ThriftyShopping';
 import Event from '~/Screens/AppHome/Event';
 import ProductDetail from '~/Components/ProductDetail';
 import Review from '~/Components/Review';
-// import ProductDetailTab from '~/Navigation/ProductDetailTap';
+import ReviewDetail from '~/Components/ProductDetail/ProductReview/ReviewDetail';
 
 import {Theme} from '~/styles/Theme';
 
@@ -82,6 +82,11 @@ export default function TopTa() {
       <Stack.Screen
         name="ProductReview"
         component={Review}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ReviewDetail"
+        component={ReviewDetail}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

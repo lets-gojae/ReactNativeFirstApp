@@ -87,7 +87,7 @@ const MyCurryTab = () => {
 export default function BottomNavigator() {
   const setTabBarVisible = (route: any) => {
     const routeName: any = getFocusedRouteNameFromRoute(route);
-    const hideOnScreens = ['ProductDetail', 'ProductReview'];
+    const hideOnScreens = ['ProductDetail', 'ProductReview', 'ReviewDetail'];
     if (hideOnScreens.indexOf(routeName) > -1) return false;
     return true;
   };

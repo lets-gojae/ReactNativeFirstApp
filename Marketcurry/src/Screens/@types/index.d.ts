@@ -1,7 +1,3 @@
-// type NaviParamList = {
-//   goBack: undefined;
-// };
-
 type LoginNaviParamList = {
   LoginModal: undefined;
   FindId: undefined;
@@ -14,4 +10,7 @@ type LoginNaviParamList = {
 type ProductDetailNaviParamList = {
   ProductDetail?: IProduct | IDetailItem;
   ProductReview?: IProduct | IDetailItem;
+  ReviewDetail?: IReviewParamList | IReviewParam | IProduct | IDetailItem;
 };
+
+//IReview | IReviewRoute;

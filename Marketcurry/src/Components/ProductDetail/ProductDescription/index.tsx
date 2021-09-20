@@ -9,7 +9,7 @@ import {Theme} from '~/styles/Theme';
 import {Mixin} from '~/styles/Mixin';
 
 interface Props {
-  item: any;
+  item: IProduct;
 }
 
 const ProductDescription = ({item}: Props) => {

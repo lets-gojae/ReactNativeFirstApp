@@ -14,7 +14,7 @@ function reducer(state: IState, action: Action): IState {
     case 'SET_REVIEW':
       return {
         ...state,
-        review: action.payload,
+        review: [...state.review].concat(action.payload),
       };
     default:
       throw new Error('unhandled action');

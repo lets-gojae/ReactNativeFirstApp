@@ -5,7 +5,9 @@ interface IState {
 interface IReview {
   title: string;
   bodyText: string;
-  image: string[];
+  image: Array<string>;
+  writer: string;
+  date: string;
 }
 
 interface Action {
@@ -13,11 +15,23 @@ interface Action {
   payload: Array<IReview>;
 }
 
-interface IImgOption {
-  storageOptions: IStorageOptions;
+interface IReviewParam {
+  i: IReview;
 }
 
-interface IStorageOptions {
-  skipBackup: boolean;
-  path: string;
+interface IReviewParamList extends IReviewParam {
+  title: string;
+  bodyText: string;
+  image: Array<string>;
+  writer: string;
+  date: string;
 }
+
+// interface IImgOption {
+//   storageOptions: IStorageOptions;
+// }
+
+// interface IStorageOptions {
+//   skipBackup: boolean;
+//   path: string;
+// }

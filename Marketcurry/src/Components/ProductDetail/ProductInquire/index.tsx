@@ -3,9 +3,11 @@ import Styled from 'styled-components/native';
 
 import {Theme} from '~/styles/Theme';
 
-interface Props {}
+interface Props {
+  item: IProduct;
+}
 
-const ProductInquire = ({}: Props) => {
+const ProductInquire = ({item}: Props) => {
   return <Container></Container>;
 };
 
