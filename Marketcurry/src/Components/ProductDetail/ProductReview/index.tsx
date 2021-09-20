@@ -1,12 +1,12 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React from 'react';
 import Styled from 'styled-components/native';
 
 import {StackNavigationProp} from '@react-navigation/stack';
 
-import {Theme} from '~/styles/Theme';
+import {useStateContext} from '~/Context/ReviewContext';
 
 import Button from '~/Components/Button';
-import ReviewItem from './ReviewItem';
+import {Theme} from '~/styles/Theme';
 
 type NavigationProp = StackNavigationProp<
   ProductDetailNaviParamList,
@@ -19,11 +19,11 @@ interface Props {
 }
 
 const ProductReview = ({navigation, item}: Props) => {
-  const [states, setStates] = useState<Array<string>>([]);
-  // const {title} = reviewContext.reviewState;
+  const state = useStateContext();
+  const review = state.review;
+
   return (
     <Container>
-      {/* {console.log(reviewContext.reviewState.title)} */}
       <ReviewWrap>
         <Button
           label="후기 쓰기"
@@ -34,13 +34,17 @@ const ProductReview = ({navigation, item}: Props) => {
           color={`${Theme.colors.mainColor}`}
           onPress={() => navigation.navigate('ProductReview', {item})}
         />
-        {/* <Review
-          data={title}
-          keyExtractor={(item, index) => {
-            return `review-${index}`;
-          }}
-          renderItem={({item, index}) => <ReviewItem item={item} />}
-        /> */}
+        <Review>
+          {review.map((i, index) => (
+            <ReviewContainer
+              onPress={() => navigation.navigate('ReviewDetail', {i, item})}
+              key={index}>
+              <Title>{i.title}</Title>
+              <Writer>{i.writer}</Writer>
+              <Date>{i.date}</Date>
+            </ReviewContainer>
+          ))}
+        </Review>
       </ReviewWrap>
     </Container>
   );
@@ -54,11 +58,35 @@ const Container = Styled.View`
 `;
 
 const ReviewWrap = Styled.View`
+  flex: 1;
+  height: 100%;
   margin: 16px;
 `;
 
-const Review = Styled.FlatList`
+const Review = Styled.ScrollView`
   margin-top: 48px;
 `;
 
-const ReviewText = Styled.Text``;
+const ReviewContainer = Styled.TouchableOpacity`
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom-width: 1px;
+  border-color: #cfcfcf;
+`;
+
+const Title = Styled.Text`
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 8px;
+`;
+
+const Writer = Styled.Text`
+  font-size: 16px; 
+  margin-bottom: 4px;
+  color: gray;
+`;
+
+const Date = Styled.Text`
+  font-size: 16px; 
+  color: gray;
+`;
