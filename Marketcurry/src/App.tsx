@@ -4,7 +4,7 @@ import {StatusBar} from 'react-native';
 import Navigator from '~/Navigation/Navigator';
 import {UserContextProvider} from '~/Context/User';
 import {ProductImagesProvider} from '~/Context/MainProductData';
-import {StoreProvider} from '~/Context/ReviewContext';
+import {StoreProvider} from '~/Context/Reducer';
 
 interface Props {}
 

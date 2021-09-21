@@ -9,8 +9,7 @@ type LoginNaviParamList = {
 
 type ProductDetailNaviParamList = {
   ProductDetail?: IProduct | IDetailItem;
-  ProductReview?: IProduct | IDetailItem;
-  ReviewDetail?: IReviewParamList | IReviewParam | IProduct | IDetailItem;
+  Review?: IProduct | IDetailItem;
+  ReviewDetail?: IReviewParamList | IReviewParam;
+  Inquiry?: IInquiryParam;
 };
-
-//IReview | IReviewRoute;

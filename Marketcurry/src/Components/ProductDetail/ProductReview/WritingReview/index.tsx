@@ -5,14 +5,11 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import ImagePicker from 'react-native-image-crop-picker';
 import {StackNavigationProp} from '@react-navigation/stack';
 
-import {useDispatchContext} from '~/Context/ReviewContext';
+import {useDispatchContext} from '~/Context/Reducer';
 import {Mixin} from '~/styles/Mixin';
 import {Theme} from '~/styles/Theme';
 
-type NavigationProp = StackNavigationProp<
-  ProductDetailNaviParamList,
-  'ProductReview'
->;
+type NavigationProp = StackNavigationProp<ProductDetailNaviParamList, 'Review'>;
 interface Props {
   navigation: NavigationProp;
   route: any;
@@ -128,11 +125,11 @@ const Header = Styled.View`
 const HeaderName = Styled.Text`
   margin-left: 48px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 500;
 `;
 
 const ItemName = Styled.Text`
-  margin: 0 24px 0 24px;
+  margin: 16px 24px 0 24px;
   padding: 8px 0 8px 8px;
   font-size: 16px;
   background-color: ${Theme.colors.containerColor};
@@ -146,6 +143,7 @@ const ReviewContainer = Styled.SafeAreaView`
 const ReviewHeader = Styled.Text`
   margin-bottom: 16px;  
   font-size: 16px;
+  font-weight: 500;
 `;
 
 const TitleInput = Styled.TextInput`

@@ -10,8 +10,9 @@ import BestProduct from '~/Screens/AppHome/BestProduct';
 import ThriftyShopping from '~/Screens/AppHome/ThriftyShopping';
 import Event from '~/Screens/AppHome/Event';
 import ProductDetail from '~/Components/ProductDetail';
-import Review from '~/Components/Review';
+import Review from '~/Components/ProductDetail/ProductReview/WritingReview';
 import ReviewDetail from '~/Components/ProductDetail/ProductReview/ReviewDetail';
+import Inquiry from '~/Components/ProductDetail/ProductInquire/Inquiry';
 
 import {Theme} from '~/styles/Theme';
 
@@ -80,13 +81,18 @@ export default function TopTa() {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="ProductReview"
+        name="Review"
         component={Review}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name="ReviewDetail"
         component={ReviewDetail}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Inquiry"
+        component={Inquiry}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

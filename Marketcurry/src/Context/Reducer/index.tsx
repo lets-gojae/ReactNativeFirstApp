@@ -2,6 +2,7 @@ import React, {createContext, useContext, useReducer, Dispatch} from 'react';
 
 const initialState: IState = {
   review: [],
+  inquiry: [],
 };
 
 type IDispatch = Dispatch<Action>;
@@ -15,6 +16,11 @@ function reducer(state: IState, action: Action): IState {
       return {
         ...state,
         review: [...state.review].concat(action.payload),
+      };
+    case 'SET_INQUIRY':
+      return {
+        ...state,
+        inquiry: [...state.inquiry].concat(action.payload),
       };
     default:
       throw new Error('unhandled action');

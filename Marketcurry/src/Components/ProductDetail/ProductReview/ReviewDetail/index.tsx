@@ -8,10 +8,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {Mixin} from '~/styles/Mixin';
 import {Theme} from '~/styles/Theme';
 
-type NavigationProp = StackNavigationProp<
-  ProductDetailNaviParamList,
-  'ProductReview'
->;
+type NavigationProp = StackNavigationProp<ProductDetailNaviParamList, 'Review'>;
 interface Props {
   navigation: NavigationProp;
   route: any;
