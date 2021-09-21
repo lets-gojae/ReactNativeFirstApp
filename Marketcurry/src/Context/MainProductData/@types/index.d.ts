@@ -34,12 +34,3 @@ interface IDescription {
   name: string;
   information: string;
 }
-
-// interface IReview {
-//   review: Array<IReviewInfo>;
-// }
-
-// interface IReviewInfo  {
-//   title: string;
-//   bodyText: string;
-// }
