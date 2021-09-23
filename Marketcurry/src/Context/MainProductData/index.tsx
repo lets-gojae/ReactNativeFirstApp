@@ -29,7 +29,7 @@ const ProductImagesProvider = ({children}: Props) => {
 
   const getProduct = async () => {
     const response = await fetch(
-      'https://gist.githubusercontent.com/lets-gojae/af16df23efd4c723d209326a4f21194f/raw/a374ebf079917dea4a6c3ff117e2e4ad95146205/product.json',
+      'https://gist.githubusercontent.com/lets-gojae/af16df23efd4c723d209326a4f21194f/raw/5920dcc7930cd3f433f5702dff4bc0cd0cc25c63/product.json',
     );
     const data = await response.json();
     setProductData(data);

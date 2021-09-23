@@ -27,9 +27,9 @@ const Review = ({navigation, route}: Props) => {
     const reviewList = {
       title: title,
       bodyText: bodyText,
+      date: date,
       image: images,
       writer: '고재원',
-      date: date,
     };
     dispatch({type: 'SET_REVIEW', payload: [reviewList]});
   };

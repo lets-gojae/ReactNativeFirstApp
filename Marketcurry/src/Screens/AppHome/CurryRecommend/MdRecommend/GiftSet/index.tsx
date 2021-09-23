@@ -21,7 +21,7 @@ const GiftSet = ({}: Props) => {
         .map((item, index) => (
           <Products
             key={index}
-            width={120}
+            style={{width: 120}}
             height={160}
             nameFont={16}
             name={item.name}

@@ -27,13 +27,12 @@ const CheapPrice = ({title}: Props) => {
           renderItem={({item, index}) => (
             <Products
               key={index}
-              width={180}
+              style={{width: 180, marginRight: 8}}
               height={220}
               nameFont={18}
               PriceFont={18}
               DiscountFont={18}
               DCPrice={18}
-              marginRight={8}
               name={item.name}
               image={item.image}
               price={item.price}

@@ -18,16 +18,21 @@ type NavigtaionProp = StackNavigationProp<
 interface Props {
   navigation: NavigtaionProp;
   item: IProduct;
+  index: number;
 }
 
 const ProductInquire = ({item, navigation}: Props) => {
-  const [toggle, setToggle] = useState<boolean>(false);
+  const [hidden, hiddenSet] = useState<any>({});
+
+  const hideMe = (index: number) => {
+    hiddenSet({...hidden, [index]: !hidden[index]});
+  };
+
   const state = useStateContext();
   const inquiry = state.inquiry;
 
   return (
     <Container>
-      {console.log(inquiry)}
       <Button
         label="상품 문의하기"
         style={{
@@ -39,7 +44,7 @@ const ProductInquire = ({item, navigation}: Props) => {
       />
       <InquiryContainer>
         {inquiry.map((item, index) => (
-          <InquiryWrap key={index} onPress={() => setToggle(!toggle)}>
+          <InquiryWrap key={index} onPress={() => hideMe(index)}>
             <TitleWrap>
               <Title>{item.title}</Title>
             </TitleWrap>
@@ -48,7 +53,7 @@ const ProductInquire = ({item, navigation}: Props) => {
               <Line />
               <Date>{item.date}</Date>
             </Bottom>
-            {inquiry.length >= 1 && toggle === true ? (
+            {hidden[index] ? (
               <MainTextWrap>
                 <AntDesign
                   name="questioncircle"
