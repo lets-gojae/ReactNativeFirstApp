@@ -7,9 +7,9 @@ import {Mixin} from '~/styles/Mixin';
 interface Props {
   name: string;
   image: string;
-  price: number;
-  discount: number;
-  discountPrice: number;
+  price?: number;
+  discount?: number;
+  discountPrice?: number;
   width?: number;
   height?: number;
   marginRight?: number;
@@ -17,9 +17,11 @@ interface Props {
   PriceFont?: number;
   DiscountFont?: number;
   DCPrice?: number;
+  style?: any;
 }
 
 const Products = ({
+  style,
   name,
   image,
   price,
@@ -34,19 +36,25 @@ const Products = ({
   DCPrice,
 }: Props) => {
   return (
-    <Container style={{width: width, marginRight: marginRight}}>
+    // style={{width: width, marginRight: marginRight}}
+    <Container style={style}>
       <Image style={{height: height}} source={{uri: image}} />
       <Name style={{fontSize: nameFont}} numberOfLines={2}>
         {name}
       </Name>
       <TextWrap>
-        <Discount style={{fontSize: DiscountFont}}>{discount}% </Discount>
+        <Discount style={{fontSize: DiscountFont}}>
+          {discount ? discount + '%' : null}
+        </Discount>
         <Price style={{fontSize: PriceFont}}>
-          {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원'}
+          {price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원'}
         </Price>
       </TextWrap>
       <DiscountPrice style={{fontSize: DCPrice}}>
-        {discountPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원'}
+        {discountPrice
+          ? discountPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') +
+            '원'
+          : null}
       </DiscountPrice>
     </Container>
   );

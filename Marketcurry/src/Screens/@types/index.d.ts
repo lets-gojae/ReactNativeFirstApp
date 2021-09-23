@@ -13,3 +13,8 @@ type ProductDetailNaviParamList = {
   ReviewDetail?: IReviewParamList | IReviewParam;
   Inquiry?: IInquiryParam;
 };
+
+interface IList {
+  id: number;
+  value: string;
+}
