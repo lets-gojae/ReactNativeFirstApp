@@ -1,5 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {Image} from 'react-native';
 import Styled from 'styled-components/native';
+
+import {UserContext} from '~/Context/MainProductData';
 
 import {Mixin} from '~/styles/Mixin';
 import {Theme} from '~/styles/Theme';
@@ -7,11 +10,18 @@ import {Theme} from '~/styles/Theme';
 interface Props {}
 
 const CategoryRecommend = ({}: Props) => {
+  const {recommendList} = useContext<IProductData>(UserContext);
   return (
     <Container>
-      <HeaderText>컬리의 추천</HeaderText>
+      {console.log(recommendList)}
+      <HeaderText>커리의 추천</HeaderText>
       <RecommendContainter>
-        <RecommendList></RecommendList>
+        {recommendList.map((item, index) => (
+          <RecommendList key={index}>
+            <Image style={{height: 140}} source={{uri: item.image}} />
+            <ImageName>{item.name}</ImageName>
+          </RecommendList>
+        ))}
       </RecommendContainter>
     </Container>
   );
@@ -30,6 +40,20 @@ const HeaderText = Styled.Text`
   font-weight: 600;
 `;
 
-const RecommendContainter = Styled.View``;
+const RecommendContainter = Styled.View`
+  ${Mixin.flexSet('null', 'null', 'row')};
+  flex-wrap: wrap;
+  align-content: space-between;
+`;
 
-const RecommendList = Styled.View``;
+const RecommendList = Styled.TouchableOpacity`
+  width: 179px;
+  margin: 0 8px 16px 16px;
+  border-width: 1px;
+  border-color: #cfcfcf;
+`;
+
+const ImageName = Styled.Text`
+  font-size: 16px;
+  margin: 8px;
+`;

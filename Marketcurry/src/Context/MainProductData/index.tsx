@@ -4,6 +4,7 @@ const defaultContext: IProductData = {
   imageList: [],
   productData: [],
   descriptionData: [],
+  recommendList: [],
   getProduct: () => {},
 };
 const UserContext = createContext(defaultContext);
@@ -18,6 +19,7 @@ const ProductImagesProvider = ({children}: Props) => {
   const [descriptionData, setDescriptionData] = useState<Array<IDescription>>(
     [],
   );
+  const [recommendList, setRecommendList] = useState<Array<IRecommendList>>([]);
 
   const getMainBanner = async () => {
     const response = await fetch(
@@ -43,10 +45,19 @@ const ProductImagesProvider = ({children}: Props) => {
     setDescriptionData(data);
   };
 
+  const getRecommendList = async () => {
+    const response = await fetch(
+      'https://gist.githubusercontent.com/lets-gojae/9bbcc1f108884dcdc192b7ddb0aab03a/raw/e8a62d48b4b2c9944c99d3501564c1966dfaf28f/categoryRecommend.json',
+    );
+    const data = await response.json();
+    setRecommendList(data);
+  };
+
   useEffect(() => {
     getItemDescription();
     getProduct();
     getMainBanner();
+    getRecommendList();
   }, []);
 
   //Review state
@@ -57,6 +68,7 @@ const ProductImagesProvider = ({children}: Props) => {
         imageList,
         productData,
         descriptionData,
+        recommendList,
         getProduct,
       }}>
       {children}

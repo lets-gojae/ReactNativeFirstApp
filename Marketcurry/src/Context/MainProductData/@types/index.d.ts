@@ -2,6 +2,7 @@ interface IProductData {
   imageList: Array<string>;
   productData: Array<IProduct>;
   descriptionData: Array<IDescription>;
+  recommendList: Array<IRecommendList>;
   getProduct: () => void;
 }
 
@@ -33,4 +34,10 @@ interface IDescription {
   id: number;
   name: string;
   information: string;
+}
+
+interface IRecommendList {
+  id: number;
+  name: string;
+  image: string;
 }
