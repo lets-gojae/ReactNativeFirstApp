@@ -27,16 +27,13 @@ const Products = ({
   price,
   discount,
   discountPrice,
-  width,
   height,
-  marginRight,
   nameFont,
   PriceFont,
   DiscountFont,
   DCPrice,
 }: Props) => {
   return (
-    // style={{width: width, marginRight: marginRight}}
     <Container style={style}>
       <Image style={{height: height}} source={{uri: image}} />
       <Name style={{fontSize: nameFont}} numberOfLines={2}>

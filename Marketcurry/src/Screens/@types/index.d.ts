@@ -18,3 +18,13 @@ interface IList {
   id: number;
   value: string;
 }
+
+interface ICategoryList {
+  id: number;
+  name: string;
+  ist: Array<ICategoryListName>;
+}
+
+interface ICategoryListName {
+  name: string;
+}

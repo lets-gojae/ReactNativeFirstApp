@@ -48,7 +48,6 @@ const MdRecommendWrap = Styled.View`
 `;
 
 const MdrecommendText = Styled.Text`
-  /* margin-left: 16px; */
   margin-bottom: 16px;
   font-size: 20px;
   font-weight: bold;

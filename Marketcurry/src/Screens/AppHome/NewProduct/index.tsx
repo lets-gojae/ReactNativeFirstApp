@@ -4,7 +4,7 @@ import Styled from 'styled-components/native';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-import {dropdownList} from './Data';
+import {dropdownList} from '../Data';
 import {UserContext} from '~/Context/MainProductData';
 import {Theme} from '~/styles/Theme';
 import {Mixin} from '~/styles/Mixin';
@@ -14,9 +14,6 @@ import Products from '~/Components/Products';
 const NewProduct = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<number>();
-  const [recommendProduct, setRecommendProduct] = useState<Array<IProductData>>(
-    [],
-  );
   const {productData} = useContext<IProductData>(UserContext);
 
   const handleItemClick = (id: any) => {
@@ -26,7 +23,6 @@ const NewProduct = () => {
 
   return (
     <Container>
-      {console.log(productData)}
       <ProductContainer>
         <FlatList
           onScroll={(event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -69,6 +65,7 @@ const NewProduct = () => {
                     },
                     shadowOpacity: 0.27,
                     shadowRadius: 4.65,
+                    elevation: 6,
                   }}>
                   {dropdownList.map((item, index) => (
                     <DropdownList
