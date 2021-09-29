@@ -13,7 +13,6 @@ const CategoryRecommend = ({}: Props) => {
   const {recommendList} = useContext<IProductData>(UserContext);
   return (
     <Container>
-      {console.log(recommendList)}
       <HeaderText>커리의 추천</HeaderText>
       <RecommendContainter>
         {recommendList.map((item, index) => (

@@ -9,7 +9,7 @@ import CategoryRecommend from './CategoryRecommend';
 
 const Category = () => {
   return (
-    <Container>
+    <Container showsVerticalScrollIndicator={false}>
       <CategoryList />
       <Line />
       <CategoryRecommend />
