@@ -8,7 +8,6 @@ import Feather from 'react-native-vector-icons/Feather';
 import {UserContext} from '~/Context/MainProductData';
 import {Mixin} from '~/styles/Mixin';
 import {Theme} from '~/styles/Theme';
-import SearchList from './SearchList';
 
 const Search = () => {
   const [inputText, setInputText] = useState<string>('');
@@ -21,7 +20,6 @@ const Search = () => {
       item.name.includes(inputText),
     );
     setFilteredData(filterData);
-    console.log(inputText);
   }, [inputText]);
 
   return (
@@ -38,17 +36,13 @@ const Search = () => {
         />
       </SearchContainer>
       {inputText.length !== 0 ? (
-        <FlatList
-          data={filteredData}
-          keyExtractor={(item, index) => {
-            return `search-${index}`;
-          }}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          renderItem={({item, index}) => (
-            <SearchList id={index} name={item.name} />
-          )}
-        />
+        <SearchListContainer>
+          {filteredData.map((item, index) => (
+            <SearchItem>
+              <ItemName>{item.name}</ItemName>
+            </SearchItem>
+          ))}
+        </SearchListContainer>
       ) : null}
     </Container>
   );
@@ -73,3 +67,19 @@ const TextInput = Styled.TextInput`
   padding-left: 50px;
   background-color: white;
 `;
+
+const ListHeaderText = Styled.Text``;
+
+const SearchListContainer = Styled.ScrollView``;
+
+const SearchItem = Styled.TouchableOpacity`
+  ${Mixin.flexSet('center', 'center', 'row')};
+  width: 390px;
+  height: 40px;
+  margin-bottom: 10px;
+  border-bottom-width: 1px;
+  border-color: #e8e8e8;
+  /* background-color: ${Theme.colors.mainColor}; */
+`;
+
+const ItemName = Styled.Text``;
