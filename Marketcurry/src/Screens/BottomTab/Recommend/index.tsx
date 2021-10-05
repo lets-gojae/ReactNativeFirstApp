@@ -18,7 +18,7 @@ const Recommend = () => {
   return (
     <Container>
       <StyledScrollView bounces={false} showsVerticalScrollIndicator={false}>
-        <CurryRanking title={'컬리 트렌드 랭킹'} />
+        <CurryRanking title={'커리 트렌드 랭킹'} />
         <ManyReviews title={'후기 10,000개를 돌파한 상품'} />
         <GoodReviews title={'후기가 좋은 상품'} />
       </StyledScrollView>

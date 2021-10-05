@@ -17,11 +17,12 @@ interface Props {
 }
 
 const Login = ({navigation}: Props) => {
-  const {signInWidthKakao, naverLogin, initials, loginToggle} =
+  const {signInWidthKakao, naverLogin, initials, getnickName} =
     useContext<IUserContext>(UserContext);
 
   return (
     <Container>
+      {console.log(getnickName)}
       <FormContainer>
         <Input placeholder="아이디를 입력해주세요" />
         <Input

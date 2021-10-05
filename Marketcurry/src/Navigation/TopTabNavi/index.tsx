@@ -41,7 +41,7 @@ const HomeTabNavi = () => {
           backgroundColor: `${Theme.colors.backColor}`,
         },
       }}>
-      <MainTopTab.Screen name="컬리추천" component={HomeRecommend} />
+      <MainTopTab.Screen name="커리추천" component={HomeRecommend} />
       <MainTopTab.Screen name="신상품" component={NewProduct} />
       <MainTopTab.Screen name="베스트" component={BestProduct} />
       <MainTopTab.Screen name="알뜰쇼핑" component={ThriftyShopping} />

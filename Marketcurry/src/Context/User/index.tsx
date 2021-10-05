@@ -3,7 +3,7 @@ import {Platform} from 'react-native';
 
 import AsyncStorage from '@react-native-community/async-storage';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {NaverLogin, getProfile} from '@react-native-seoul/naver-login';
+import {NaverLogin} from '@react-native-seoul/naver-login';
 import {
   KakaoOAuthToken,
   KakaoProfile,
@@ -24,10 +24,10 @@ const iosKeys = {
 const initials = Platform.OS === 'ios' && iosKeys;
 
 const defaultContext: IUserContext = {
+  getnickName: '',
   isLoading: false,
   loginToggle: false,
   initials: undefined,
-  // userInfo: undefined,
   naverToken: undefined,
   kakaoToken: undefined,
   getProfile: () => {},
@@ -59,19 +59,21 @@ const UserContextProvider = ({children, navigation}: Props) => {
         setLoginToggle(true);
         setIsLoading(true);
         console.log(token);
-        console.log(loginToggle);
-        navigation?.navigate('FindId');
       }
     } catch (e) {
       console.log(e);
     }
   };
 
-  const [getProfil, setGetProfil] = useState<string>('');
+  const [getnickName, setgetnickName] = useState<string>('');
   const getProfile = async (): Promise<void> => {
     const profile: KakaoProfile = await getKakaoProfile();
-    setGetProfil(JSON.stringify(profile));
+    setgetnickName(JSON.stringify(profile.nickname));
   };
+
+  useEffect(() => {
+    getProfile();
+  }, []);
 
   const [naverToken, setNaverToken] = useState<string>('');
   const naverLogin = (props: any) => {
@@ -108,6 +110,7 @@ const UserContextProvider = ({children, navigation}: Props) => {
   return (
     <UserContext.Provider
       value={{
+        getnickName,
         isLoading,
         loginToggle,
         kakaoToken,

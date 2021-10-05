@@ -16,9 +16,9 @@ const CategoryList = () => {
   };
 
   return (
-    <Container>
+    <>
       {CategoryName.map((item, index) => (
-        <>
+        <Container>
           <Dropdown key={index} onPress={() => handleItemClick(item.id)}>
             <TitleWrap>
               <DropdownTitle>{item.name}</DropdownTitle>
@@ -40,9 +40,9 @@ const CategoryList = () => {
               )}
             </>
           ))}
-        </>
+        </Container>
       ))}
-    </Container>
+    </>
   );
 };
 

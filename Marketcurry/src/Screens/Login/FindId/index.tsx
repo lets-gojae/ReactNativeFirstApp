@@ -1,5 +1,4 @@
 import React from 'react';
-// import {} from 'react-native';
 import Styled from 'styled-components/native';
 
 import {StackNavigationProp} from '@react-navigation/stack';

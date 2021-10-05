@@ -1,15 +1,23 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {FlatList} from 'react-native';
-
 import Styled from 'styled-components/native';
 
+import {StackNavigationProp} from '@react-navigation/stack';
 import Feather from 'react-native-vector-icons/Feather';
 
 import {UserContext} from '~/Context/MainProductData';
 import {Mixin} from '~/styles/Mixin';
 import {Theme} from '~/styles/Theme';
 
-const Search = () => {
+type NavigationProp = StackNavigationProp<
+  ProductDetailNaviParamList,
+  'ProductDetail'
+>;
+interface Props {
+  navigation: NavigationProp;
+}
+
+const Search = ({navigation}: Props) => {
   const [inputText, setInputText] = useState<string>('');
   const [filteredData, setFilteredData] = useState<Array<IProduct>>([]);
 
@@ -38,7 +46,10 @@ const Search = () => {
       {inputText.length !== 0 ? (
         <SearchListContainer>
           {filteredData.map((item, index) => (
-            <SearchItem>
+            <SearchItem
+              key={index}
+              onPress={() => navigation.navigate('ProductDetail', {item})}>
+              {console.log(item)}
               <ItemName>{item.name}</ItemName>
             </SearchItem>
           ))}

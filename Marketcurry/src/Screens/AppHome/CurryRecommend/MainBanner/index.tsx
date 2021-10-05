@@ -25,7 +25,7 @@ const MainBanner = ({imageList}: Props) => {
     <Swiper
       style={{height: 390}}
       renderPagination={renderPagination}
-      loop={false}
+      loop={true}
       autoplay={true}
       autoplayTimeout={3}
       showsButtons={false}>
