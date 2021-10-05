@@ -1,5 +1,5 @@
 import React from 'react';
-import {StatusBar} from 'react-native';
+import {StatusBar, LogBox} from 'react-native';
 
 import Navigator from '~/Navigation/Navigator';
 import {UserContextProvider} from '~/Context/User';
@@ -9,6 +9,8 @@ import {StoreProvider} from '~/Context/Reducer';
 interface Props {}
 
 const App = ({}: Props) => {
+  LogBox.ignoreLogs(['Remote debugger']);
+
   return (
     <ProductImagesProvider>
       <UserContextProvider>

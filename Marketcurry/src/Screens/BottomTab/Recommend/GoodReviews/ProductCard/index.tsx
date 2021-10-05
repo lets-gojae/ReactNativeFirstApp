@@ -29,7 +29,6 @@ const ProductCard = ({name, image, price, discount, discountPrice}: Props) => {
         shadowRadius: 2.65,
         elevation: 2,
       }}>
-      {console.log(review)}
       <Image style={{width: 300, height: 200}} source={{uri: image}} />
       <ProductInfo>
         <Name numberOfLines={2}>{name}</Name>

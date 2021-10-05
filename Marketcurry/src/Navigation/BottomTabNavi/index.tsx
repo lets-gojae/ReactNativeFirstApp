@@ -161,7 +161,7 @@ export default function BottomNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="마이컬리"
+        name="마이커리"
         component={MyCurryTab}
         options={{
           tabBarIcon: ({color, focused}) => (

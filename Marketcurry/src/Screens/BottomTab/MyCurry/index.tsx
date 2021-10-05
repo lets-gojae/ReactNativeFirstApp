@@ -60,7 +60,7 @@ const MyCurryTab = ({navigation}: Props) => {
       <Line />
       <StackContainer>
         <Button
-          label="컬리 소개"
+          label="커리 소개"
           style={{
             borderBottomWidth: 2,
             borderColor: '#fafafa',
