@@ -40,7 +40,7 @@ const UserContext = createContext(defaultContext);
 
 type NavigationProp = StackNavigationProp<LoginNaviParamList, 'FindId'>;
 interface Props {
-  navigation?: NavigationProp;
+  navigation: NavigationProp;
   children: JSX.Element | Array<JSX.Element>;
 }
 
@@ -68,7 +68,7 @@ const UserContextProvider = ({children, navigation}: Props) => {
   const [getnickName, setgetnickName] = useState<string>('');
   const getProfile = async (): Promise<void> => {
     const profile: KakaoProfile = await getKakaoProfile();
-    setgetnickName(JSON.stringify(profile.nickname));
+    setgetnickName(profile.nickname);
   };
 
   useEffect(() => {
@@ -97,10 +97,11 @@ const UserContextProvider = ({children, navigation}: Props) => {
 
   const logout = (): void => {
     AsyncStorage.removeItem('accessToken');
+    setLoginToggle(false);
     // NaverLogin.logout();
     // setUserInfo(undefined);
     setKakaoToken('');
-    // setNaverToken('');
+    setNaverToken('');
   };
 
   // useEffect(() => {
