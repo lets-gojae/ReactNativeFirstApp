@@ -4,6 +4,7 @@ interface IUserInfo {
 }
 
 interface IUserContext {
+  getnickName: string;
   isLoading: boolean;
   loginToggle: boolean;
   initials: any;

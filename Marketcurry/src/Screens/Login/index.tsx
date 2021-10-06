@@ -17,12 +17,17 @@ interface Props {
 }
 
 const Login = ({navigation}: Props) => {
-  const {signInWidthKakao, naverLogin, initials, getnickName} =
-    useContext<IUserContext>(UserContext);
+  const {
+    signInWidthKakao,
+    logout,
+    naverLogin,
+    initials,
+    getnickName,
+    loginToggle,
+  } = useContext<IUserContext>(UserContext);
 
   return (
     <Container>
-      {console.log(getnickName)}
       <FormContainer>
         <Input placeholder="아이디를 입력해주세요" />
         <Input
@@ -37,12 +42,13 @@ const Login = ({navigation}: Props) => {
           fontWeight="bold"
           onPress={() => navigation.goBack()}
         />
+
         <SLContainer>
           <SocialLogin>소셜로그인으로 로그인</SocialLogin>
           <KakaoBtn
             label="카카오 로그인"
             style={{marginTop: 16, marginBottom: 8}}
-            onPress={() => signInWidthKakao()}
+            onPress={signInWidthKakao}
           />
 
           <NaverBtn

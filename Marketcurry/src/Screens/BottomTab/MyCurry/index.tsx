@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Styled from 'styled-components/native';
 
+import {UserContext} from '~/Context/User';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 import {Theme} from '~/styles/Theme';
@@ -13,29 +14,66 @@ interface Props {
 }
 
 const MyCurryTab = ({navigation}: Props) => {
+  const {logout, getnickName, loginToggle} =
+    useContext<IUserContext>(UserContext);
+
   return (
     <Container>
-      <LoginContainer>
-        <HeaderText>회원 가입하고 </HeaderText>
-        <HeaderText>다양한 혜택을 받아보세요!</HeaderText>
-        <Button
-          label="가입 혜택 보기"
-          style={{marginBottom: 24}}
-          color="#b0b0b0"
-          onPress={() => navigation.navigate('LoginModal')}
-        />
-        <Button
-          label="로그인 / 회원가입"
-          style={{backgroundColor: `${Theme.colors.mainColor}`}}
-          color="white"
-          fontWeight="bold"
-          onPress={() => navigation.navigate('LoginModal')}
-        />
-      </LoginContainer>
-      <Line />
+      {loginToggle ? (
+        <>
+          <LoginContainer>
+            <HeaderText>{getnickName}님</HeaderText>
+          </LoginContainer>
+        </>
+      ) : (
+        <>
+          <LoginContainer>
+            <HeaderText>회원 가입하고 </HeaderText>
+            <HeaderText>다양한 혜택을 받아보세요!</HeaderText>
+            <Button
+              label="가입 혜택 보기"
+              style={{marginBottom: 24}}
+              color="#b0b0b0"
+              onPress={() => navigation.navigate('LoginModal')}
+            />
+            <Button
+              label="로그인 / 회원가입"
+              style={{backgroundColor: `${Theme.colors.mainColor}`}}
+              color="white"
+              fontWeight="bold"
+              onPress={() => navigation.navigate('LoginModal')}
+            />
+          </LoginContainer>
+          <Line />
+          <StackContainer>
+            <Button
+              label="비회원 주문 조회"
+              style={{
+                borderBottomWidth: 2,
+                borderColor: '#fafafa',
+                justifyContent: 'flex-end',
+                flexDirection: 'row-reverse',
+              }}
+              color="black"
+              onPress={() => navigation.navigate('OrderInquiry')}
+            />
+            <Button
+              label="알림 설정"
+              style={{
+                borderBottomWidth: 2,
+                borderColor: '#fafafa',
+                justifyContent: 'flex-end',
+                flexDirection: 'row-reverse',
+              }}
+              color="black"
+              onPress={() => navigation.navigate('NotiSettings')}
+            />
+          </StackContainer>
+        </>
+      )}
       <StackContainer>
         <Button
-          label="비회원 주문 조회"
+          label="커리 소개"
           style={{
             borderBottomWidth: 2,
             borderColor: '#fafafa',
@@ -43,18 +81,6 @@ const MyCurryTab = ({navigation}: Props) => {
             flexDirection: 'row-reverse',
           }}
           color="black"
-          onPress={() => navigation.navigate('OrderInquiry')}
-        />
-        <Button
-          label="알림 설정"
-          style={{
-            borderBottomWidth: 2,
-            borderColor: '#fafafa',
-            justifyContent: 'flex-end',
-            flexDirection: 'row-reverse',
-          }}
-          color="black"
-          onPress={() => navigation.navigate('NotiSettings')}
         />
       </StackContainer>
       <Line />
@@ -120,15 +146,28 @@ const MyCurryTab = ({navigation}: Props) => {
           color="black"
         />
       </StackContainer>
+      <Line />
+      <StackContainer>
+        <Button
+          label="로그아웃"
+          style={{
+            borderBottomWidth: 2,
+            borderColor: '#fafafa',
+            justifyContent: 'flex-end',
+            flexDirection: 'row-reverse',
+          }}
+          color="black"
+          onPress={logout}
+        />
+      </StackContainer>
     </Container>
   );
 };
 
 export default MyCurryTab;
 
-const Container = Styled.TouchableOpacity`
+const Container = Styled.SafeAreaView`
   flex: 1;
-  width: 100%;
   background-color: ${Theme.colors.white};
 `;
 
