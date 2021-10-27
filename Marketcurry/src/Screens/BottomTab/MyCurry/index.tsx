@@ -8,6 +8,8 @@ import {Theme} from '~/styles/Theme';
 import {Mixin} from '~/styles/Mixin';
 import Button from '~/Components/Button';
 
+import {First} from './Data';
+
 type NavigationProp = StackNavigationProp<LoginNaviParamList, 'LoginModal'>;
 interface Props {
   navigation: NavigationProp;
@@ -85,7 +87,20 @@ const MyCurryTab = ({navigation}: Props) => {
       </StackContainer>
       <Line />
       <StackContainer>
-        <Button
+        {First.map((item, index) => (
+          <Button
+            key={index}
+            label={item.name}
+            style={{
+              borderBottomWidth: 2,
+              borderColor: '#fafafa',
+              justifyContent: 'flex-end',
+              flexDirection: 'row-reverse',
+            }}
+            color="black"
+          />
+        ))}
+        {/* <Button
           label="커리 소개"
           style={{
             borderBottomWidth: 2,
@@ -144,7 +159,7 @@ const MyCurryTab = ({navigation}: Props) => {
             flexDirection: 'row-reverse',
           }}
           color="black"
-        />
+        /> */}
       </StackContainer>
       <Line />
       <StackContainer>
