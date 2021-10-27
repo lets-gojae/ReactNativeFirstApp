@@ -69,6 +69,7 @@ const UserContextProvider = ({children, navigation}: Props) => {
   const getProfile = async (): Promise<void> => {
     const profile: KakaoProfile = await getKakaoProfile();
     setgetnickName(profile.nickname);
+    console.log(profile);
   };
 
   useEffect(() => {
